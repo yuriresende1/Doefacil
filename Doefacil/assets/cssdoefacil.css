@@ -1,0 +1,201 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #fafcff;;
+}
+
+header {
+    background-color: #59b3fd;
+    padding: 20px;
+}
+
+.descrição {
+    text-align: justify;
+    margin: 125px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.box {
+    width: 350px;
+    height: 500px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 3px;
+    padding: 50px;
+    text-align: center;
+    
+}
+
+footer {
+	background-color: #59b3fd;
+	color: #fff;
+	padding: 1px;
+	text-align: center;
+	margin-top:100px;
+}
+
+
+nav {
+    display:flex;
+    width: 84%;
+    margin: auto;
+    padding: 20px 0;
+    align-items: left;
+    justify-content: space-between;    
+}
+
+.styled-hr {
+    border: 1px solid #d4d4d4;
+    margin: 1px 0;
+  }
+
+.logo {
+    width: 10%;
+    
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+nav ul li a:hover{
+    color: #59b3fd;
+}
+
+.detel{
+    margin-left: 8%;
+    margin-top: 15%;
+}
+
+.detel h1{
+    font-size: 50px;
+    color: #212121;
+    margin-bottom: 20px;
+}
+
+
+.detel p{
+    color: #555;
+    line-height: 22px;
+}
+
+.detel a{
+    background: #212121;
+    padding: 10px 18px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff;
+    display: inline-block;
+    margin: 30px 0;
+    border-radius: 5px;
+}
+
+.detel a:hover{
+    background-color: #59b3fd;
+}
+
+.images{
+    width: 45%;
+    height: 75%;
+    position: absolute;
+    bottom: 50px;
+    right: 1px;
+}
+
+.images img{
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    transition: bottom 1s, left 1s;
+}
+
+.images:hover .shape{
+    bottom: 40px;
+}
+
+.images:hover .fotocv2{
+    left: 45%;
+}
+
+.social{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social a{
+    font-size: 30px;
+    color: #f7f6f6;
+    margin-right: 20px;
+}
+
+.social a:hover{
+    color: #003c79;
+}
+
+/* media queries para tornar o CSS responsivo */
+
+@media screen and (max-width: 768px) {
+  /* ajuste da largura da navegação */
+nav {
+    width: 100%;
+    justify-content:center;
+    flex-direction:column;
+    align-items:center;
+}
+
+  /* alinha a navegação verticalmente */
+nav ul {
+    flex-direction: row;
+    align-items: center;
+    display: flexbox;
+    justify-content: center;
+    height: 100%;
+
+}
+
+  /* remove as margens e o padding das listas de navegação */
+nav ul li {
+    margin: 8px;
+    padding: 0;
+}
+
+  /* ajusta a fonte da lista de navegação */
+nav ul li a {
+    font-size: 16px;
+}
+
+  /* ajusta o tamanho da imagem */
+.images {
+    width: 100%;
+    height: auto;
+    position:relative;
+    margin-top: 170px;
+}
+
+  /* ajusta o tamanho da imagem dentro do container */
+.images img {
+    width: 90%;
+    height: auto;
+    margin-left: -25%;
+    transform: translateX(-1%);
+    transition: bottom 1s, left 1s;
+    }
+}
