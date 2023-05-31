@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Perfil do Usuário - DoeFácil</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    /* Estilos personalizados adicionais para este perfil específico */
+    body {
+      background-color: #f5f5f5;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #333;
+    }
+
+    .label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .checkbox-label {
+      display: inline-block;
+      margin-right: 10px;
+      color: #555;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    .error-message {
+      color: red;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Perfil do Usuário</h2>
+    <form action="#" method="post">
+      <label for="nome" class="label">Nome completo:</label>
+      <input type="text" id="nome" name="nome" class="input-field" required>
+
+      <label for="data_nascimento" class="label">Data de nascimento:</label>
+      <input type="date" id="data_nascimento" name="data_nascimento" class="input-field" required>
+
+      <label for="genero" class="label">Gênero:</label>
+      <select id="genero" name="genero" class="input-field" required>
+        <option value="">Selecione</option>
+        <option value="masculino">Masculino</option>
+        <option value="feminino">Feminino</option>
+        <option value="outro">Outro</option>
+      </select>
+
+      <label for="endereco" class="label">Endereço completo:</label>
+      <input type="text" id="endereco" name="endereco" class="input-field" required>
+
+      <label for="telefone" class="label">Número de telefone:</label>
+      <input type="tel" id="telefone" name="
