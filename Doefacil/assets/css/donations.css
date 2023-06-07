@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+header {
+	background-color: #F1F6F9;
+    height: 605px;
+    background-image: url(../cabeçalho.png);
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logo {
+    width: 9%;
+    margin-left: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+}
+
+.container {
+    width: 90vw;
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.box1 {
+    width: 400px;
+    height: 500px;
+    border: 2px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1px;
+}
+
+.box1:hover {
+    text-transform: scale(1.2);
+}
+
+.historia1 {
+    width: 90%;
+    height: 100px;
+    text-align: center;
+}
+
+.titleAction {
+    margin-top: 5px;
+}
+
+.imgAction {
+    width: 80%;
+    height: 200px;
+    margin-top: 50px;
+}
+
+nav {
+    display: inline-block;
+    text-align: right;
+    list-style: none;
+    padding: 10;
+    width: 84%;
+    margin: 5px 50px;
+    margin-left: 20px;
+    padding: 15px 10px;
+    align-items: left;
+    justify-content: space-between;    
+    
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin-left: 5px;
+    background-color: #003c79;
+    border-radius: 30px;
+    border-width: 100px;
+    padding: 10px;
+}
+
+nav ul li a{
+    display: block;
+    padding: 2px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+nav ul li a:hover{
+    color: #59b3fd;
+    content: "";
+}
+
+footer {
+	background-color: #59b3fd;
+	color: #fff;
+	padding: 1px;
+	text-align: center;
+	margin-top:100px;
+}
+
+.social a{
+    font-size: 30px;
+    color: #f7f6f6;
+    margin-right: 20px;
+}
+
+.social a:hover{
+    color: #003c79;
+}
