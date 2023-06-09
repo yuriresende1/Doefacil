@@ -14,6 +14,7 @@
                 <p class='historia1'>".$row->description."</p>
                 <br>
                 <p>".$row->action_creator."</p>
+                <a href='#' target='_blank' class='donationNow'>Contribuir agora</a>
             </section>
         ";
     }
