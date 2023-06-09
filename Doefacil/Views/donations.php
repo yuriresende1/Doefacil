@@ -26,7 +26,7 @@
       </nav>
     </div>
   </header>
-  <h2>Testando o cadastro da ação</h2>
+  <h2>Cadastrar nova ação</h2>
   <form action="../Controllers/AdminActions.php" method="post" enctype="multipart/form-data">
     <label for="title">Título da ação:</label>
     <input required type="text" name="title" id="title">
@@ -80,3 +80,4 @@
 		<p>&copy; 2023 GRUPO GLYMTECH Todos os direitos reservados.</p>
 	</footer>
 </body>
+</html>
