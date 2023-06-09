@@ -6,6 +6,7 @@
         $description = $_POST['description'];
         $action_creator = $_POST['action_creator'];
         $expiration_date = $_POST['expiration_date'];
+        
         $extensao = strtolower(substr($_FILES['thumbnail']['name'], -4)); // pegando a extensão
         $new_name = $title . $extensao;
         $directory = "../assets/thumbnails/";

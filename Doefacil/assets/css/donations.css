@@ -76,7 +76,7 @@ nav ul li a:hover{
 
 .box1 {
     width: 400px;
-    height: 500px;
+    height: 520px;
     border: 2px solid black;
     border-radius: 5px;
     display: flex;
@@ -104,11 +104,26 @@ nav ul li a:hover{
 .imgAction {
     width: 80%;
     height: 200px;
+    border-radius: 6px;
+    border-bottom: 6px solid #003468;
     margin-top: 50px;
 }
 
 .donationNow {
     margin-top: 20px;
+    text-decoration: none;
+    border: 2px solid #003468;
+    padding: 5px;
+    margin-bottom: 5px;
+    background-color: #68bdd8;
+    border-radius: 6px;
+    color: #003468;
+}
+
+.donationNow:hover {
+    border: 2px solid #003468;
+    background-color: #003468;
+    color: #68bdd8;
 }
 
 footer {

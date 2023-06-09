@@ -22,7 +22,6 @@
                 <li><a href="#">Sobre nós</a></li>
                 <li><a href="./Views/donations.php">Doações</a></li>
                 <li><a href="#">Contato</a></li>
-                <li><a href="./Views/login.php">Login</a></li>
             </ul>
         </nav>
     </div>

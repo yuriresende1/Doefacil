@@ -64,7 +64,7 @@
 
             showAlert('Usuário cadastrado', '../Views/login.php');
         } catch(PDOException $error) {
-            showAlert('Falha ao fazer cadastro', '../Views/login.php');
+            showAlert('Falha ao fazer cadastro: '. $error, '../Views/login.php');
         }
     }
 
