@@ -28,46 +28,6 @@ header {
     
 }
 
-.container {
-    width: 90vw;
-    margin: auto;
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-}
-
-.box1 {
-    width: 400px;
-    height: 500px;
-    border: 2px solid black;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1px;
-}
-
-.box1:hover {
-    text-transform: scale(1.2);
-}
-
-.historia1 {
-    width: 90%;
-    height: 100px;
-    text-align: center;
-}
-
-.titleAction {
-    margin-top: 5px;
-}
-
-.imgAction {
-    width: 80%;
-    height: 200px;
-    margin-top: 50px;
-}
-
 nav {
     display: inline-block;
     text-align: right;
@@ -103,6 +63,52 @@ nav ul li a{
 nav ul li a:hover{
     color: #59b3fd;
     content: "";
+}
+
+.container {
+    width: 90vw;
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.box1 {
+    width: 400px;
+    height: 500px;
+    border: 2px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1px;
+    transition: 0.5s;
+}
+
+.box1:hover {
+    transform: scale(1.015);
+    transition: 0.5s;
+}
+
+.historia1 {
+    width: 90%;
+    height: 100px;
+    text-align: center;
+}
+
+.titleAction {
+    margin-top: 5px;
+}
+
+.imgAction {
+    width: 80%;
+    height: 200px;
+    margin-top: 50px;
+}
+
+.donationNow {
+    margin-top: 20px;
 }
 
 footer {
