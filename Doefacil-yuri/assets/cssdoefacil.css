@@ -9,60 +9,56 @@ body {
 }
 
 header {
-	background-color: #F1F6F9;
-    height: 605px;
-    background-image: url(./cabeçalho.png);
-    background-size: 60%;
-    background-position: center;
+    position: relative;
+    height: 80px;
+    background-size: 100%;
+    background-image: url(./Doefacillogo.png);
+    background-size: contain;
+    background-position: 15%;
     background-repeat: no-repeat;
     display: flex;
     justify-content: flex-end;
 }
 
-.logo {
-    width: 9%;
-    margin-left: 10px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    
+.carousel-section {
+    max-width: 100px; /* Define a largura máxima da seção */
+    margin: 0 auto; /* Centraliza a seção horizontalmente */
+    padding: 20px; /* Adiciona um espaçamento interno à seção */
+}
+
+.carousel-item.carousel-image {
+    max-width: 100px; /* Define a largura máxima das imagens dentro do carrossel */
+    height: auto; /* Garante que a altura das imagens seja ajustada proporcionalmente */
 }
 
 nav {
-    display: inline-block;
-    text-align: right;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     list-style: none;
-    padding: 10;
-    width: 84%;
-    margin: 5px 50px;
-    margin-left: 20px;
-    padding: 15px 10px;
-    align-items: left;
-    justify-content: space-between;    
-    
+    padding: 0;
+    display: flex;
+    align-items: center;
 }
 
 nav ul li {
-    display: inline-block;
-    list-style: none;
     margin-left: 5px;
-    background-color: #003c79;
     border-radius: 30px;
-    border-width: 100px;
     padding: 10px;
+    display: inline-block; /* Adicionado para alinhar os botões lado a lado */
 }
 
-nav ul li a{
+nav ul li a {
     display: block;
     padding: 2px;
     text-decoration: none;
-    color: #ffffff;
+    color: rgb(100, 100, 100);
     font-weight: bold;
 }
 
-nav ul li a:hover{
+nav ul li a:hover {
     color: #59b3fd;
-    content: "";
 }
 
 
