@@ -4,65 +4,81 @@
     font-family: sans-serif;
 }
 
-body {
+body { /* corpo da pagina */
     background-color: #ffffff;
 }
 
-header {
-	background-color: #F1F6F9;
-    height: 605px;
-    background-image: url(./cabeçalho.png);
-    background-size: 60%;
-    background-position: center;
+header { /* cabeçalho */
+    position: fixed;
+    height: 80px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 10px;
+    z-index: 9999;
+    background-size: 100%;
+    background-image: url(./Doefacillogo.png);
+    background-size: contain;
+    background-position: 15%;
     background-repeat: no-repeat;
     display: flex;
     justify-content: flex-end;
 }
 
-.logo {
-    width: 9%;
-    margin-left: 10px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    
+.carousel-item { /* itens do carrossel */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-nav {
-    display: inline-block;
-    text-align: right;
+.carousel-inner { /*  */
+    max-width: 100%;
+    max-height: 800px;
+    object-fit: cover;
+
+}
+
+.carousel-inner img {  /* imagens carrosel */
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 2.0s ease; /* Adiciona um efeito de transição suave */    
+}
+
+.carousel-inner:hover img {
+    transform: scale(1.2); /* Aumenta um pouco a escala da imagem no hover */
+}
+
+nav {  /* botões */
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     list-style: none;
-    padding: 10;
-    width: 84%;
-    margin: 5px 50px;
-    margin-left: 20px;
-    padding: 15px 10px;
-    align-items: left;
-    justify-content: space-between;    
-    
+    padding: 0;
+    display: flex;
+    align-items: center;
 }
 
 nav ul li {
-    display: inline-block;
-    list-style: none;
     margin-left: 5px;
-    background-color: #003c79;
     border-radius: 30px;
-    border-width: 100px;
     padding: 10px;
+    display: inline-block; /* Adicionado para alinhar os botões lado a lado */
 }
 
-nav ul li a{
+nav ul li a {
     display: block;
     padding: 2px;
     text-decoration: none;
-    color: #ffffff;
+    color: rgb(100, 100, 100);
     font-weight: bold;
 }
 
-nav ul li a:hover{
+nav ul li a:hover {
     color: #59b3fd;
-    content: "";
 }
 
 
@@ -95,7 +111,7 @@ h1[id="h1id2"] {
     margin-right: 127px;
     margin-left: 127px;
     margin-bottom: 50px;
-    background-color: #f5fbff;
+    background-color: #f8faff;
     padding: 20px;
     font-weight: 700;
     border-color: transparent;
