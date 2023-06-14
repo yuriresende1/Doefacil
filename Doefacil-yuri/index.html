@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="./assets/cssdoefacil.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -182,11 +185,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
-      $(document).ready(function() {
-        $('.carousel').carousel({
-          interval: 5000 // Define o intervalo de 5 segundos entre cada slide
-        });
-      });
+window.addEventListener('load', function() {
+    var carousel = document.querySelector('.carousel');
+    carousel.classList.add('active');
+
+    var images = carousel.querySelectorAll('img');
+    var currentImageIndex = 0;
+
+    function showImage(index) {
+        for (var i = 0; i < images.length; i++) {
+            images[i].classList.remove('active');
+    }
+        images[index].classList.add('active');
+}
+
+    setInterval(function() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        showImage(currentImageIndex);
+}, 100);
+});
     </script>
 </body>
 </html>
