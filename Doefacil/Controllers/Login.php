@@ -6,7 +6,8 @@
     }
 
     function showAlert($message, $location) {
-        echo "<script>showAlert('{$message}', '{$location}');</script>";
+        echo "<script>showAlert('{$message}')</script>";
+        echo "<script>redirect('{$location}')</script>";
     }
 
     function loginAction($conn) {
@@ -45,6 +46,7 @@
     function registerAction($conn) {
         $username = $_POST['username'];
         $email = $_POST['email'];
+        $type_user = 'User';
         $password = $_POST['password'];
         $confirmPassword = $_POST['confirmPassword'];
 

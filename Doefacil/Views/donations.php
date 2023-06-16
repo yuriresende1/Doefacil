@@ -35,7 +35,7 @@
     <input required type="file" name="thumbnail" id="thumbnail">
     <br>
     <label for="description">Descrição da ação:</label>
-    <textarea required name="description" id="description" cols="30" rows="10"></textarea>
+    <textarea required name="description" id="description" cols="30" rows="10" maxlength="154"></textarea>
     <br>
     <label for="action_creator">Dono da ação:</label>
     <input required type="text" name="action_creator" id="action_creator">

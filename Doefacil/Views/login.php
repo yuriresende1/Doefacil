@@ -10,7 +10,7 @@
     <body>
         <div class="container">
             <div class="card" id="login-form">
-                <img src="../assets/Doefacillogo.png" alt="Logo">
+                <img src="../assets/images/Doefacillogo.png" alt="Logo">
                 <h2 class="card-title">Faça o login</h2>
                 <form action="../Controllers/Login.php" method="post">
                     <input type="hidden" name="acao" value="login">
@@ -29,7 +29,7 @@
                 <button id="signup-button" class="btn-secondary">Cadastrar</button>
             </div>
             <div class="card form-card" id="signup-form">
-                <img src="../assets/Doefacillogo.png" alt="Imagem de Cadastro">
+                <img src="../assets/images/Doefacillogo.png" alt="Imagem de Cadastro">
                 <h2 class="card-title">Faça seu cadastro</h2>
                 <form action="../Controllers/Login.php" method="post">
                     <input type="hidden" name="acao" value="register">
