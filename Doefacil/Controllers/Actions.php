@@ -11,7 +11,27 @@
                 <img class='imgAction' src='../assets/thumbnails/".$row->title.$extension."' alt='imagem da ação \"".$row->title."\"'>
                 <p class='historia1'>".$row->description."</p>
                 <p>Responsável pela ação: ".$row->action_creator."</p>
-                <a href='#' target='_blank' class='donationNow'>Contribuir agora</a>
+                <div class='buttonsActions'>
+        ";
+
+        if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin') {
+            echo "
+                <a href='#' target='_blank' class='donationNow'>Editar</a>
+            ";
+        }
+        
+        echo "
+            <a href='#' target='_blank' class='donationNow'>Contribuir agora</a>
+        ";
+
+        if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin') {
+            echo "
+                <a href='#' target='_blank' class='donationNow'>Excluir</a>
+            ";
+        }
+
+        echo "
+                </div>
             </section>
         ";
     }
