@@ -3,30 +3,41 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DoeFacil</title>
-    <link rel="stylesheet" href="./assets/css/cssdoefacil.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DoeFacil</title>
+        <link rel="stylesheet" href="./assets/css/cssdoefacil.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
     <body>
         <header>
             <div class="botões">
-            <nav>
-                <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Sobre nós</a></li>
-                    <li><a href="./Views/donations.php">Doações</a></li>
-                    <li><a href="#">Contato</a></li>
-                    <li><a href="./Views/login.php">Login</a></li>
-                </ul>
-            </nav>
-        </div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="./Views/donations.php">Doações</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <?php
+                            if (session_start()){
+                                if (isset($_SESSION['username'])) {
+                                    $username = $_SESSION['username'];
+                                    echo "<li><a href='#'>{$username}</a></li>";
+                                    echo "<li><a href='./Controllers/Login.php?acao=logout'>Logout</a></li>";
+                                } else {
+                                    echo "<li><a href='./Views/login.php'>Login</a></li>";
+                                }
+                            }
+                        ?>
+                        
+                    </ul>
+                </nav>
+            </div>
         </header>
         <hr class="styled-hr">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
