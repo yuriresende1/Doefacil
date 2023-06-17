@@ -5,9 +5,8 @@
         echo "<script>window.location='{$location}'</script>";
     }
 
-    function showAlert($message, $location) {
-        echo "<script>showAlert('{$message}')</script>";
-        echo "<script>redirect('{$location}')</script>";
+    function showAlert($message) {
+        echo "<script>alert('{$message}')</script>";
     }
 
     function loginAction($conn) {
@@ -15,7 +14,8 @@
         $password = $_POST['password'];
 
         if (empty($username) || empty($password)) {
-            showAlert('Informe o nome de usuário e a senha', '../Views/login.php');
+            showAlert('Informe o nome de usuário e a senha');
+            redirect('../Views/login.php');
             return;
         }
 
@@ -36,7 +36,8 @@
 
                 redirect('../index.php');
             } else {
-                showAlert('Falha ao fazer login! Usuário ou senha incorretos', '../Views/login.php');
+                showAlert('Falha ao fazer login! Usuário ou senha incorretos');
+                redirect('../Views/login.php');
             }
         } catch(PDOException $error) {
             echo "Erro ao executar consulta: " . $error->getMessage();
@@ -46,28 +47,41 @@
     function registerAction($conn) {
         $username = $_POST['username'];
         $email = $_POST['email'];
-        $type_user = 'User';
+        $type_user = 'user';
         $password = $_POST['password'];
         $confirmPassword = $_POST['confirmPassword'];
 
         if ($password !== $confirmPassword) {
-            showAlert('As senhas não correspondem', '../Views/login.php');
+            showAlert('As senhas não correspondem');
+            redirect('../Views/login.php');
             return;
         }
 
-        $sql = "INSERT INTO login (username, email, password) VALUES (:username, :email, :password)";
+        $sql = "INSERT INTO login (username, email, password, type_user) VALUES (:username, :email, :password, :type_user)";
 
         try {
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':username', $username);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':type_user', $type_user);
             $stmt->execute();
 
-            showAlert('Usuário cadastrado', '../Views/login.php');
+            showAlert('Usuário cadastrado');
+            redirect('../Views/login.php');
         } catch(PDOException $error) {
-            showAlert('Falha ao fazer cadastro: '. $error, '../Views/login.php');
+            showAlert('Falha ao fazer cadastro: '. $error);
+            redirect('../Views/login.php');
         }
+    }
+
+    function logoutAction() {
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+
+        session_destroy();
+        redirect('../index.php');
     }
 
     if (!isset($_REQUEST["acao"])) {
@@ -83,7 +97,11 @@
         case 'register':
             registerAction($conn);
             break;
-            
+        
+        case 'logout':
+            logoutAction();
+            break;
+
         default:
             redirect('../Views/login.php');
             break;
