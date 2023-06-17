@@ -15,40 +15,59 @@
 <body>
   <header>
     <div class="botões">
-      <nav>
-        <img src="../assets/Doefacillogo.png" class="logo">
-        <ul>
-            <li><a href="../index.php">Início</a></li>
-            <li><a href="#">Sobre nós</a></li>
-            <li><a href="#">Doações</a></li>
-            <li><a href="#">Contato</a></li>
-        </ul>
-      </nav>
+        <nav>
+            <ul>
+                <li><a href="../index.php">Início</a></li>
+                <li><a href="#">Sobre nós</a></li>
+                <li><a href="./Views/donations.php">Doações</a></li>
+                <li><a href="#">Contato</a></li>
+                <?php
+                    if (session_start()){
+                        if (isset($_SESSION['username'])) {
+                            $username = $_SESSION['username'];
+                            echo "<li><a href='#'>{$username}</a></li>";
+                            echo "<li><a href='../Controllers/Login.php?acao=logout'>Logout</a></li>";
+                        } else {
+                            echo "<li><a href='./login.php'>Login</a></li>";
+                        }
+                    }
+                ?>
+                
+            </ul>
+        </nav>
     </div>
   </header>
-  <h2>Cadastrar nova ação</h2>
-  <form action="../Controllers/AdminActions.php" method="post" enctype="multipart/form-data">
-    <label for="title">Título da ação:</label>
-    <input required type="text" name="title" id="title">
-    <br>
-    <label for="thumbnail">Imagem da ação:</label>
-    <input required type="file" name="thumbnail" id="thumbnail">
-    <br>
-    <label for="description">Descrição da ação:</label>
-    <textarea required name="description" id="description" cols="30" rows="10" maxlength="154"></textarea>
-    <br>
-    <label for="action_creator">Dono da ação:</label>
-    <input required type="text" name="action_creator" id="action_creator">
-    <br>
-    <label for="expiration_date">Data de expiração:</label>
-    <input required type="date" name="expiration_date" id="expiration_date">
-    <br>
-    <input type="submit" value="Cadastrar">
-  </form>
+  <hr class="styled-hr">
+  <?php if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin'): ?>
+  <div class="container1">
+    <h2>Cadastrar nova ação</h2>
+    <form action="../Controllers/AdminActions.php" method="post" enctype="multipart/form-data">
+      <label for="title">Título da ação:</label>
+      <input required type="text" name="title" id="title">
+      <br>
+      <label for="thumbnail">Imagem da ação:</label>
+      <input required type="file" name="thumbnail" id="thumbnail">
+      <br>
+      <label for="description">Descrição da ação:</label>
+      <textarea required name="description" id="description" cols="30" rows="10" maxlength="154"></textarea>
+      <br>
+      <label for="action_creator">Dono da ação:</label>
+      <input required type="text" name="action_creator" id="action_creator">
+      <br>
+      <label for="expiration_date">Data de expiração:</label>
+      <input required type="date" name="expiration_date" id="expiration_date">
+      <br>
+      <input type="submit" value="Cadastrar">
+    </form>
+  </div>
+  <?php endif; ?>
   <div class="container">
-    <?php
-      include("../Controllers/Actions.php");
-    ?>
+    <h2>Confira todas as ações</h2>
+    <div class="allActions">
+      <?php
+        include("../Controllers/Actions.php");
+      ?>
+    </div>
   </div>
   <footer>
 		<h3>Atendimento</h3>
