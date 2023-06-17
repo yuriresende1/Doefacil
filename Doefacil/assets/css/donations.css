@@ -8,70 +8,82 @@ body {
     background-color: #ffffff;
 }
 
-header {
-	background-color: #F1F6F9;
-    height: 605px;
-    background-image: url(../cabeçalho.png);
-    background-size: 60%;
-    background-position: center;
+header { /* cabeçalho */
+    position: fixed;
+    height: 80px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 10px;
+    z-index: 9999;
+    background-size: 100%;
+    background-image: url(../images/Doefacillogo.png);
+    background-size: contain;
+    background-position: 15%;
     background-repeat: no-repeat;
     display: flex;
     justify-content: flex-end;
 }
 
-.logo {
-    width: 9%;
-    margin-left: 10px;
+nav {  /* botões */
     position: absolute;
-    left: 0;
-    top: 0;
-    
-}
-
-nav {
-    display: inline-block;
-    text-align: right;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     list-style: none;
-    padding: 10;
-    width: 84%;
-    margin: 5px 50px;
-    margin-left: 20px;
-    padding: 15px 10px;
-    align-items: left;
-    justify-content: space-between;    
-    
+    padding: 0;
+    display: flex;
+    align-items: center;
 }
 
 nav ul li {
-    display: inline-block;
-    list-style: none;
     margin-left: 5px;
-    background-color: #003c79;
     border-radius: 30px;
-    border-width: 100px;
     padding: 10px;
+    display: inline-block; /* Adicionado para alinhar os botões lado a lado */
 }
 
-nav ul li a{
+nav ul li a {
     display: block;
     padding: 2px;
     text-decoration: none;
-    color: #ffffff;
+    color: rgb(100, 100, 100);
     font-weight: bold;
 }
 
-nav ul li a:hover{
+nav ul li a:hover {
     color: #59b3fd;
-    content: "";
+}
+
+.styled-hr {
+    border: 1px solid #d4d4d4;
+    margin: 1px 0;
+}
+
+.container1 {
+    margin-top: 100px;
 }
 
 .container {
     width: 90vw;
     margin: auto;
+    margin-top: 100px;
     padding: 10px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 5px;
+}
+
+.allActions {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
 }
 
 .box1 {
@@ -107,6 +119,10 @@ nav ul li a:hover{
     height: 200px;
     border-radius: 6px;
     border-bottom: 6px solid #003468;
+    margin-top: 30px;
+}
+
+.buttonsActions {
     margin-top: 30px;
 }
 
