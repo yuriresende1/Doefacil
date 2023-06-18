@@ -19,7 +19,7 @@
               <ul>
                   <li><a href="../index.php">Início</a></li>
                   <li><a href="#">Sobre nós</a></li>
-                  <li><a href="./Views/donations.php">Doações</a></li>
+                  <li><a href="#">Doações</a></li>
                   <li><a href="#">Contato</a></li>
                   <?php
                       if (session_start()){
@@ -53,6 +53,9 @@
         <br>
         <label for="full_description">Descrição completa:</label>
         <textarea required name="full_description" id="full_description" cols="30" rows="10" maxlength="500"></textarea>
+        <br>
+        <label for="donated">O que pode ser doado:</label>
+        <textarea required name="donated" id="donated" cols="30" rows="10" maxlength="500"></textarea>
         <br>
         <label for="action_creator">Dono da ação:</label>
         <input required type="text" name="action_creator" id="action_creator">

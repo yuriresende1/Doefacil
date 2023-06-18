@@ -1,3 +1,7 @@
+<?php
+    include('../Models/DoeFacil.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -11,9 +15,9 @@
             <div class="botões">
                 <nav>
                     <ul>
-                        <li><a href="#">Início</a></li>
+                        <li><a href="../index.php">Início</a></li>
                         <li><a href="#">Sobre nós</a></li>
-                        <li><a href="./Views/donations.php">Doações</a></li>
+                        <li><a href="./donations.php">Doações</a></li>
                         <li><a href="#">Contato</a></li>
                         <?php
                             if (session_start()){
@@ -31,6 +35,21 @@
             </div>
         </header>
         <hr class="styled-hr">
+        <main>
+            <div class="container">
+                <div>
+                    <?php
+                        include('../Controllers/Contribuition.php');
+                    ?>  
+                </div>  
+                <div>
+                    Resida em Viçosa?
+                    Prefere que busquemos a doação?
+                    O que será doado? Quantidade?
+                    Enviar por correio?
+                </div>
+            </div>        
+        </main>
         <footer>
             <h3>Atendimento</h3>
             <br>
