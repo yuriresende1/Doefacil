@@ -19,8 +19,8 @@
               <ul>
                   <li><a href="../index.php">Início</a></li>
                   <li><a href="#">Sobre nós</a></li>
-                  <li><a href="#">Doações</a></li>
-                  <li><a href="#">Contato</a></li>
+                  <li><a href="#">Ações Beneficentes</a></li>
+                  <li><a href="./createActions.php">Criar Ação</a></li>
                   <?php
                       if (session_start()){
                           if (isset($_SESSION['username'])) {
@@ -38,35 +38,6 @@
       </div>
     </header>
     <hr class="styled-hr">
-    <?php if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin'): ?>
-    <div class="container1">
-      <h2>Cadastrar nova ação</h2>
-      <form action="../Controllers/AdminActions.php" method="post" enctype="multipart/form-data">
-        <label for="title">Título da ação:</label>
-        <input required type="text" name="title" id="title">
-        <br>
-        <label for="thumbnail">Imagem da ação:</label>
-        <input required type="file" name="thumbnail" id="thumbnail">
-        <br>
-        <label for="short_description">Breve descrição:</label>
-        <textarea required name="short_description" id="short_description" cols="30" rows="10" maxlength="154"></textarea>
-        <br>
-        <label for="full_description">Descrição completa:</label>
-        <textarea required name="full_description" id="full_description" cols="30" rows="10" maxlength="500"></textarea>
-        <br>
-        <label for="donated">O que pode ser doado:</label>
-        <textarea required name="donated" id="donated" cols="30" rows="10" maxlength="500"></textarea>
-        <br>
-        <label for="action_creator">Dono da ação:</label>
-        <input required type="text" name="action_creator" id="action_creator">
-        <br>
-        <label for="expiration_date">Data de expiração:</label>
-        <input required type="date" name="expiration_date" id="expiration_date">
-        <br>
-        <input type="submit" value="Cadastrar">
-      </form>
-    </div>
-    <?php endif; ?>
     <div class="container">
       <h2>Confira todas as ações</h2>
       <div class="allActions">
@@ -84,7 +55,7 @@
           <br>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
           <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-          </svg> doefacil@gmail.com
+          </svg> doefacilsite@gmail.com
           <br>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
