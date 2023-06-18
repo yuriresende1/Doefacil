@@ -119,6 +119,14 @@ h3 {
     margin: 20px auto;
 }
 
+.form {
+    margin-top: 20px;
+}
+
+.form h2 {
+    text-align: center;
+}
+
 footer {
 	background-color: #59b3fd;
 	color: #fff;
