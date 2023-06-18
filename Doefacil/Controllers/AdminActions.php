@@ -1,28 +1,70 @@
 <?php
     include("../Models/DoeFacil.php");
 
-    if(isset($_FILES['thumbnail'])) {
+    function redirect($location) {
+        echo "<script>window.location='{$location}'</script>";
+    }
+
+    function showAlert($message) {
+        echo "<script>alert('{$message}')</script>";
+    }
+
+    function insertAction($conn) {
+        if(isset($_FILES['thumbnail'])) {
+            $title = $_POST['title'];
+            $short_description = $_POST['short_description'];
+            $full_description = $_POST['full_description'];
+            $donated = $_POST['donated'];
+            $action_creator = $_POST['action_creator'];
+            $expiration_date = $_POST['expiration_date'];
+            
+            $extensao = strtolower(substr($_FILES['thumbnail']['name'], -4)); // pegando a extensão
+            $new_name = $title . $extensao;
+            $directory = "../assets/thumbnails/";
+            move_uploaded_file($_FILES['thumbnail']['tmp_name'], $directory.$new_name);
+    
+            $sql = "INSERT INTO acoes (title, thumbnail, short_description, full_description, donated,  action_creator, expiration_date) VALUES ('{$title}', '{$new_name}', '{$short_description}', '{$full_description}', '{$donated}', '{$action_creator}', '{$expiration_date}')";
+    
+            $stmt = $conn->query($sql);
+    
+            if($stmt) {
+                showAlert('Sucesso');
+                redirect('../Views/donations.php');
+            } else {
+                showAlert('Erro');
+                redirect('../Views/donations.php');
+            }
+        }
+    }
+
+    function requestAction() {
+        // Colocar aqui os dados de quem está enviando
+        
         $title = $_POST['title'];
         $short_description = $_POST['short_description'];
         $full_description = $_POST['full_description'];
         $donated = $_POST['donated'];
         $action_creator = $_POST['action_creator'];
         $expiration_date = $_POST['expiration_date'];
+
+        $email = 'doefacilsite@gmail.com';
+        $subject = 'Solicitar criação de ação';
+        $body = "Título: $title\n\nDescrição curta: $short_description\n\nDescrição completa: $full_description\n\nO que pode ser doado: $donated\n\nDono da ação: $action_creator\n\nData de expiração: $expiration_date\n\nNão se esquecça de anexar aqui a imagem da ação";
+
+        $mailto = "https://mail.google.com/mail/?view=cm&fs=1&to=" . urlencode($email) . "&su=" . urlencode($subject) . "&body=" . urlencode($body);
+
+        header("Location: $mailto");
+        exit();
+    }
+
+    $action = $_REQUEST["acao"];
+    switch ($action) {
+        case 'insert':
+            insertAction($conn);
+            break;
         
-        $extensao = strtolower(substr($_FILES['thumbnail']['name'], -4)); // pegando a extensão
-        $new_name = $title . $extensao;
-        $directory = "../assets/thumbnails/";
-        move_uploaded_file($_FILES['thumbnail']['tmp_name'], $directory.$new_name);
-
-        $sql = "INSERT INTO acoes (title, thumbnail, short_description, full_description, donated,  action_creator, expiration_date) VALUES ('{$title}', '{$new_name}', '{$short_description}', '{$full_description}', '{$donated}', '{$action_creator}', '{$expiration_date}')";
-
-        $stmt = $conn->query($sql);
-
-        if($stmt) {
-            echo "<script>alert('Sucesso')</script>";
-            echo "<script>window.location='../Views/donations.php'</script>";
-        } else {
-            echo "<script>alert('Erro')</script>";
-        }
+        case 'request':
+            requestAction($conn);
+            break;
     }
 ?>
