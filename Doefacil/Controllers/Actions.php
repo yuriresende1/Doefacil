@@ -16,17 +16,17 @@
 
         if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin') {
             echo "
-                <a href='#' target='_blank' class='donationNow'>Editar</a>
+                <a href='#' class='donationNow'>Editar</a>
             ";
         }
         
         echo "
-            <a href='./contribuition.php' target='_blank' class='donationNow'>Contribuir agora</a>
+            <a href='./contribuition.php?id=".$row->id."' class='donationNow'>Contribuir agora</a>
         ";
 
         if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin') {
             echo "
-                <a href='#' target='_blank' class='donationNow'>Excluir</a>
+                <a href='#' class='donationNow'>Excluir</a>
             ";
         }
 
