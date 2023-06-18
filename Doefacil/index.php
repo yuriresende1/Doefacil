@@ -20,8 +20,8 @@
                     <ul>
                         <li><a href="#">Início</a></li>
                         <li><a href="#">Sobre nós</a></li>
-                        <li><a href="./Views/donations.php">Doações</a></li>
-                        <li><a href="#">Contato</a></li>
+                        <li><a href="./Views/donations.php">Ações Beneficentes</a></li>
+                        <li><a href="./Views/createActions.php">Criar Ação</a></li>
                         <?php
                             if (session_start()){
                                 if (isset($_SESSION['username'])) {
@@ -153,7 +153,7 @@
             <br>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
             <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-            </svg> doefacil@gmail.com
+            </svg> doefacilsite@gmail.com
             <br>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
