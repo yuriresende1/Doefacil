@@ -9,7 +9,7 @@
             <section class='box1'>
                 <h2 class='titleAction'>".$row->title."</h2>
                 <img class='imgAction' src='../assets/thumbnails/".$row->title.$extension."' alt='imagem da ação \"".$row->title."\"'>
-                <p class='historia1'>".$row->description."</p>
+                <p class='historia1'>".$row->short_description."</p>
                 <p>Responsável pela ação: ".$row->action_creator."</p>
                 <div class='buttonsActions'>
         ";
@@ -21,7 +21,7 @@
         }
         
         echo "
-            <a href='#' target='_blank' class='donationNow'>Contribuir agora</a>
+            <a href='./contribuition.php' target='_blank' class='donationNow'>Contribuir agora</a>
         ";
 
         if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin') {
