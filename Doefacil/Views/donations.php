@@ -25,7 +25,7 @@
                       if (session_start()){
                           if (isset($_SESSION['username'])) {
                               $username = $_SESSION['username'];
-                              echo "<li><a href='#'>{$username}</a></li>";
+                              echo "<li><a href='./profile.php'>{$username}</a></li>";
                               echo "<li><a href='../Controllers/Login.php?acao=logout'>Logout</a></li>";
                           } else {
                               echo "<li><a href='./login.php'>Login</a></li>";

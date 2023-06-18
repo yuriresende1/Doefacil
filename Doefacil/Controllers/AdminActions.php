@@ -38,8 +38,6 @@
     }
 
     function requestAction() {
-        // Colocar aqui os dados de quem está enviando
-        
         $title = $_POST['title'];
         $short_description = $_POST['short_description'];
         $full_description = $_POST['full_description'];
@@ -49,11 +47,18 @@
 
         $email = 'doefacilsite@gmail.com';
         $subject = 'Solicitar criação de ação';
+        //colocar os dados do rementente aqui
         $body = "Título: $title\n\nDescrição curta: $short_description\n\nDescrição completa: $full_description\n\nO que pode ser doado: $donated\n\nDono da ação: $action_creator\n\nData de expiração: $expiration_date\n\nNão se esquecça de anexar aqui a imagem da ação";
 
         $mailto = "https://mail.google.com/mail/?view=cm&fs=1&to=" . urlencode($email) . "&su=" . urlencode($subject) . "&body=" . urlencode($body);
 
-        header("Location: $mailto");
+        if (header("Location: $mailto")) {
+            showAlert('Solicitação enviada');
+        } else {
+            showAlert('Erro ao enviar a solicitação');
+        }
+        
+        redirect('../index.php');
         exit();
     }
 

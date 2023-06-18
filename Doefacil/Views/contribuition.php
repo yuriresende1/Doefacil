@@ -24,7 +24,7 @@
                             if (session_start()){
                                 if (isset($_SESSION['username'])) {
                                     $username = $_SESSION['username'];
-                                    echo "<li><a href='#'>{$username}</a></li>";
+                                    echo "<li><a href='./profile.php'>{$username}</a></li>";
                                     echo "<li><a href='./Controllers/Login.php?acao=logout'>Logout</a></li>";
                                 } else {
                                     echo "<li><a href='./Views/login.php'>Login</a></li>";
@@ -65,7 +65,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="delivery">Prefere que busquemos a doação ou prefere enviar por correio?</label>
+                            <label for="delivery">Prefere que busquemos a doação (Em caso de residência em Viçosa) ou prefere enviar por correio?</label>
                             <select class="form-control" name="delivery" id="delivery" required>
                                 <option value="busca">Busca</option>
                                 <option value="correio">Correio</option>
