@@ -5,6 +5,7 @@
         $title = $_POST['title'];
         $short_description = $_POST['short_description'];
         $full_description = $_POST['full_description'];
+        $donated = $_POST['donated'];
         $action_creator = $_POST['action_creator'];
         $expiration_date = $_POST['expiration_date'];
         
@@ -13,7 +14,7 @@
         $directory = "../assets/thumbnails/";
         move_uploaded_file($_FILES['thumbnail']['tmp_name'], $directory.$new_name);
 
-        $sql = "INSERT INTO acoes (title, thumbnail, short_description, full_description, action_creator, expiration_date) VALUES ('{$title}', '{$new_name}', '{$short_description}', '{$full_description}', '{$action_creator}', '{$expiration_date}')";
+        $sql = "INSERT INTO acoes (title, thumbnail, short_description, full_description, donated,  action_creator, expiration_date) VALUES ('{$title}', '{$new_name}', '{$short_description}', '{$full_description}', '{$donated}', '{$action_creator}', '{$expiration_date}')";
 
         $stmt = $conn->query($sql);
 
