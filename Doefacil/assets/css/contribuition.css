@@ -58,6 +58,67 @@ nav ul li a:hover {
     margin: 1px 0;
 }
 
+main {
+    min-height: 100vh;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 90%;
+    margin-top: 50px;
+}
+
+.titleAction {
+    text-align: center;
+    font-size: 36px;
+}
+
+.actionCreator {
+    text-align: center;
+    margin-top: 10px;
+}
+
+span {
+    color: #003c79;
+    font-weight: bold;
+}
+
+.imgAction {
+    width: 50%;
+    display: block;
+    margin: 30px auto;
+    border-radius: 10px;
+    border: 2px solid #003c79;
+}
+
+.shortDescription {
+    text-align: center;
+    width: 60%;
+    margin: auto;
+    padding: 10px;
+    border-bottom: 2px solid #003c79;
+}
+
+.fullDescription {
+    text-align: center;
+    width: 60%;
+    margin: auto;
+    padding: 10px;
+}
+
+h3 {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.donated {
+    text-align: center;
+    margin: 20px auto;
+}
+
 footer {
 	background-color: #59b3fd;
 	color: #fff;
