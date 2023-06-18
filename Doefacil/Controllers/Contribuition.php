@@ -14,7 +14,6 @@
                 <p class='fullDescription'>".$row->full_description."</p>
                 <h3>O que pode ser doado?</h3>
                 <p class='donated'>".$row->donated."</p>
-                <a href='./Views/contribuition.php?id=".$row->id."' class='donationNow'>Contribuir agora</a>
             </section>
         ";
     }
