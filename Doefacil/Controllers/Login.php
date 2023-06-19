@@ -32,6 +32,7 @@
 
                 $_SESSION['id'] = $usuario['id'];
                 $_SESSION['username'] = $usuario['username'];
+                $_SESSION['email'] = $usuario['email'];
                 $_SESSION['type_user'] = $usuario['type_user'];
 
                 redirect('../index.php');

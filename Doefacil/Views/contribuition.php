@@ -45,37 +45,176 @@
                 </div>  
                 <div class="form">
                     <h2>Preencha os campos abaixo</h2>
-                    <form action="" method="post">
-                        <div class="form-group">
-                            <label for="item">O que você quer doar?</label>
-                            <input type="text" class="form-control" name="item" id="item" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="quantity">Informe a quantidade:</label>
-                            <input type="text" class="form-control" name="quantity" id="quantity" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="reside">Reside em Viçosa?</label>
-                            <select class="form-control" name="reside" id="reside" required>
-                                <option value="sim">Sim</option>
-                                <option value="nao">Não</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="delivery">Prefere que busquemos a doação (Em caso de residência em Viçosa) ou prefere enviar por correio?</label>
-                            <select class="form-control" name="delivery" id="delivery" required>
-                                <option value="busca">Busca</option>
-                                <option value="correio">Correio</option>
-                            </select>
-                        </div>
-                        
-                        <input type="submit" class="btn btn-primary" value="Doar">
-                    </form>
-                </div>
-            </div>        
+                        <ul class="nav nav-tabs">
+                            <h3>Escolha como quer doar: </h3>
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pessoaFisica-tab" data-bs-toggle="tab" href="#pessoaFisica">Pessoa Física</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pessoaJuridica-tab" data-bs-toggle="tab" href="#pessoaJuridica">Pessoa Jurídica</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="pessoaFisica">
+                                <h3 class="mt-4">Dados Pessoais - Pessoa Física</h3>
+                                <form method="post" action="../Controllers/Donation.php">
+                                    <input type="hidden" name="acao" value="PF">
+                                    <input type="hidden" name="id_benefited_action" value="<?php echo $_REQUEST["id"];?>">
+                                    <input type="hidden" name="myId" value="<?php echo $_SESSION['id']; ?>">
+                                    <div class="mb-3">
+                                        <label for="namePF" class="form-label">Nome:</label>
+                                        <input type="text" class="form-control" id="namePF" name="namePF" placeholder="Insira seu nome">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="CPF" class="form-label">CPF:</label>
+                                        <input type="text" class="form-control" id="CPF" name="CPF" placeholder="Insira seu CPF">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="emailPF" class="form-label">E-mail:</label>
+                                        <input type="email" class="form-control" id="emailPF" name="emailPF" placeholder="Insira seu e-mail">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="contact_numberPF" class="form-label">Telefone:</label>
+                                        <input type="text" class="form-control" id="contact_numberPF" name="contact_numberPF" placeholder="Insira seu telefone">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="marital_statusPF" class="form-label">Estado Civil:</label>
+                                        <input type="text" class="form-control" id="marital_statusPF" name="marital_statusPF" placeholder="Insira seu estado civil">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="addressPF" class="form-label">Endereço:</label>
+                                        <input type="text" class="form-control" id="addressPF" name="addressPF" placeholder="Insira seu endereço">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="numberPF" class="form-label">Número da Residência:</label>
+                                        <input type="text" class="form-control" id="numberPF" name="numberPF" placeholder="Insira o número da residência">
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="mb-3">
+                                            <label for="cityPF" class="form-label">Cidade:</label>
+                                            <input type="text" class="form-control" id="cityPF" name="cityPF" placeholder="Insira sua cidade">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="statePF" class="form-label">Estado:</label>
+                                        <input type="text" class="form-control" id="statePF" name="statePF" placeholder="Insira seu estado">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="countryPF" class="form-label">País de Domicílio:</label>
+                                        <input type="text" class="form-control" id="countryPF" name="countryPF" placeholder="Insira seu país de domicílio">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="birthplacePF" class="form-label">País de Origem:</label>
+                                        <input type="text" class="form-control" id="birthplacePF" name="birthplacePF" placeholder="Insira seu país de origem">
+                                    </div>
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="notificationsPF" name="notificationsPF">
+                                        <label class="form-check-label" for="notificationsPF">Aceito receber notificações do site para participar de futuras campanhas de doação</label>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="recurring_donorPF" class="form-label">O que seria necessário para você se tornar um doador recorrente:</label>
+                                        <textarea class="form-control" id="recurring_donorPF" name="recurring_donorPF" placeholder="Descreva o que seria necessário para se tornar um doador recorrente"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="item">O que você quer doar para essa campanha?</label>
+                                        <input type="text" class="form-control" name="item" id="item" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="quantity">Informe a quantidade:</label>
+                                        <input type="text" class="form-control" name="quantity" id="quantity" required>
+                                    </div>                                   
+                                    <div class="form-group">
+                                        <label for="reside">Reside em Viçosa?</label>
+                                        <select class="form-control" name="reside" id="reside" required>
+                                            <option value="sim">Sim</option>
+                                            <option value="nao">Não</option>
+                                        </select>
+                                    </div>                                   
+                                    <div class="form-group">
+                                        <label for="delivery">Prefere que busquemos a doação (Em caso de residência em Viçosa) ou prefere enviar por correio?</label>
+                                        <select class="form-control" name="delivery" id="delivery" required>
+                                            <option value="busca">Busca</option>
+                                            <option value="correio">Correio</option>
+                                        </select>
+                                    </div>                                 
+                                    <input type="submit" class="btn btn-primary" value="Doar">
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="pessoaJuridica">
+                                <h3 class="mt-4">Dados Empresariais - Pessoa Jurídica</h3>
+                                <form method="post" name="acao" value="PJ">
+                                    <input type="hidden" name="PF" value="PF">
+                                    <div class="mb-3">
+                                        <label for="namePJ" class="form-label">Nome:</label>
+                                        <input type="text" class="form-control" id="namePJ" name="namePJ" placeholder="Insira o nome da empresa">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="cnpj" class="form-label">CNPJ:</label>
+                                        <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="Insira o CNPJ da empresa">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="emailPJ" class="form-label">E-mail:</label>
+                                        <input type="email" class="form-control" id="emailPJ" name="emailPJ" placeholder="Insira o e-mail da empresa">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="contact_numberPJ" class="form-label">Telefone:</label>
+                                        <input type="text" class="form-control" id="contact_numberPJ" name="contact_numberPJ" placeholder="Insira o telefone da empresa">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="addressPJ" class="form-label">Endereço:</label>
+                                        <input type="text" class="form-control" id="addressPJ" name="addressPJ" placeholder="Insira o endereço da empresa">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="numberPJ" class="form-label">Número da Localização:</label>
+                                        <input type="text" class="form-control" id="numberPJ" name="numberPJ" placeholder="Insira o número da localização">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="cityPJ" class="form-label">Cidade:</label>
+                                        <input type="text" class="form-control" id="cityPJ" name="cityPJ" placeholder="Insira a cidade">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="statePJ" class="form-label">Estado:</label>
+                                        <input type="text" class="form-control" id="statePJ" name="statePJ" placeholder="Insira o estado">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="countryPJ" class="form-label">País de Domicílio:</label>
+                                        <input type="text" class="form-control" id="countryPJ" name="countryPJ" placeholder="Insira o país de domicílio">
+                                    </div>
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="notificationsPJ" name="notificationsPJ">
+                                        <label class="form-check-label" for="notificationsPJ">Aceito receber notificações do site para participar de futuras campanhas de doação</label>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="recurring_donorPJ" class="form-label">O que seria necessário para a empresa se tornar um doador recorrente:</label>
+                                        <textarea class="form-control" id="recurring_donorPJ" name="recurring_donorPJ" placeholder="Descreva o que seria necessário para a empresa se tornar um doador recorrente"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="item">O que você quer doar?</label>
+                                        <input type="text" class="form-control" name="item" id="item" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="quantity">Informe a quantidade:</label>
+                                        <input type="text" class="form-control" name="quantity" id="quantity" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reside">Reside em Viçosa?</label>
+                                        <select class="form-control" name="reside" id="reside" required>
+                                            <option value="sim">Sim</option>
+                                            <option value="nao">Não</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="delivery">Prefere que busquemos a doação (Em caso de residência em Viçosa) ou prefere enviar por correio?</label>
+                                        <select class="form-control" name="delivery" id="delivery" required>
+                                            <option value="busca">Busca</option>
+                                            <option value="correio">Correio</option>
+                                        </select>
+                                    </div>
+                                    <input type="submit" class="btn btn-primary" value="Doar">
+                                </form>
+                            </div>
+                            </div>
+                        </div>        
         </main>
         <footer>
             <h3>Atendimento</h3>
@@ -106,5 +245,10 @@
             <br>
             <p>&copy; 2023 GRUPO GLYMTECH Todos os direitos reservados.</p>
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+        <script>
+		    feather.replace();
+	    </script>
     </body>
 </html>
