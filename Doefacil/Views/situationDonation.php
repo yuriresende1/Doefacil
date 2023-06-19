@@ -19,13 +19,13 @@
                         <li><a href="../index.php">Início</a></li>
                         <li><a href="#">Sobre nós</a></li>
                         <li><a href="./donations.php">Ações beneficentes</a></li>
-                        <li><a href="#">Criar ação</a></li>
+                        <li><a href="./createActions.php">Criar ação</a></li>
                         <?php
                             if (session_start()){
                                 if (isset($_SESSION['username'])) {
                                     $username = $_SESSION['username'];
                                     echo "<li><a href='./profile.php'>{$username}</a></li>";
-                                    echo "<li><a href='../Controllers/Login.php?acao=logout'>Logout</a></li>";
+                                    echo "<li><a href='./Controllers/Login.php?acao=logout'>Logout</a></li>";
                                 } else {
                                     echo "<li><a href='./Views/login.php'>Login</a></li>";
                                 }
@@ -38,57 +38,26 @@
         <hr class="styled-hr">
         <main>
             <div class="container">
-                <h2>Entenda como funciona</h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum exercitationem ipsa voluptatibus eligendi soluta numquam dolores ut accusantium enim culpa error totam odio libero consequatur nobis voluptatum, molestias atque modi. EXPLICAÇÃO DE COMO FUNCIONA PARA PEDIR PARA CRIAR UMA AÇÃO</p>
-                <div class="container1">
-                    <h2 class="text-center">Cadastrar nova ação</h2>
-                    <form action="../Controllers/AdminActions.php" method="post" enctype="multipart/form-data">
-                        <?php if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin') {
-                            echo "<input type='hidden' name='acao' value='insert'>";
-                        } else {
-                            echo "<input type='hidden' name='acao' value='request'>";
-                        }
-                        ?>
-                        <div class="form-group">
-                            <label for="title">Título da ação:</label>
-                            <input required type="text" class="form-control" name="title" id="title">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="thumbnail">Imagem da ação:</label>
-                            <input required type="file" class="form-control-file" name="thumbnail" id="thumbnail">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="short_description">Breve descrição:</label>
-                            <textarea required class="form-control" name="short_description" id="short_description" cols="30" rows="5" maxlength="154"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="full_description">Descrição completa:</label>
-                            <textarea required class="form-control" name="full_description" id="full_description" cols="30" rows="5" maxlength="500"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="donated">O que pode ser doado:</label>
-                            <textarea required class="form-control" name="donated" id="donated" cols="30" rows="5" maxlength="500"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="action_creator">Dono da ação:</label>
-                            <input required type="text" class="form-control" name="action_creator" id="action_creator">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="expiration_date">Data de expiração:</label>
-                            <input required type="date" class="form-control" name="expiration_date" id="expiration_date">
-                        </div>
-
-                        <input type="submit" class="btn btn-primary" value="Cadastrar">
-
-                    </form>
-                </div>
-            </div>        
+            <?php
+                $myEmail = $_SESSION['email'];
+                $sql = "SELECT * FROM situation_donations WHERE email_donor='$myEmail'";
+                $stmt = $conn->query($sql);
+                $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+                        
+                if(count($result) >= 1) {
+                    foreach($result as $row) {
+                        echo $row->donor."<br/>";
+                        echo $row->id_donor."<br/>";
+                        echo $row->recipient."<br/>";
+                        echo $row->status_donation."<br/>";
+                        echo $row->information."<br/>";
+                        echo $row->email_donor;
+                    }
+                } else {
+                    echo "Você não tem solicitações";
+                }
+            ?>
+            </div>         
         </main>
         <footer>
             <h3>Atendimento</h3>
@@ -119,6 +88,10 @@
             <br>
             <p>&copy; 2023 GRUPO GLYMTECH Todos os direitos reservados.</p>
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+        <script>
+		    feather.replace();
+	    </script>
     </body>
 </html>
-

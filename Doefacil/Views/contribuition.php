@@ -61,6 +61,7 @@
                                     <input type="hidden" name="acao" value="PF">
                                     <input type="hidden" name="id_benefited_action" value="<?php echo $_REQUEST["id"];?>">
                                     <input type="hidden" name="myId" value="<?php echo $_SESSION['id']; ?>">
+                                    <input type="hidden" name="email_donor" value="<?php echo $_SESSION['email']; ?>">
                                     <div class="mb-3">
                                         <label for="namePF" class="form-label">Nome:</label>
                                         <input type="text" class="form-control" id="namePF" name="namePF" placeholder="Insira seu nome">
@@ -142,8 +143,11 @@
                             </div>
                             <div class="tab-pane fade" id="pessoaJuridica">
                                 <h3 class="mt-4">Dados Empresariais - Pessoa Jurídica</h3>
-                                <form method="post" name="acao" value="PJ">
-                                    <input type="hidden" name="PF" value="PF">
+                                <form method="post" action="../Controllers/Donation.php">
+                                    <input type="hidden" name="acao" value="PJ">
+                                    <input type="hidden" name="id_benefited_action" value="<?php echo $_REQUEST["id"];?>">
+                                    <input type="hidden" name="myId" value="<?php echo $_SESSION['id']; ?>">
+                                    <input type="hidden" name="email_donor" value="<?php echo $_SESSION['email']; ?>">
                                     <div class="mb-3">
                                         <label for="namePJ" class="form-label">Nome:</label>
                                         <input type="text" class="form-control" id="namePJ" name="namePJ" placeholder="Insira o nome da empresa">

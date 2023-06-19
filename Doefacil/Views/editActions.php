@@ -42,37 +42,51 @@
         <hr class="styled-hr">
         <main>
             <div class="container">
-                <h2>entenda como funciona</h2>
                 <div class="container1">
-                    <h2>Cadastrar nova ação</h2>
+                    <h2 class="text-center">Editar ação</h2>
                     <form action="../Controllers/AdminActions.php" method="post" enctype="multipart/form-data">
                         <?php if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin') {
                             echo "<input type='hidden' name='acao' value='edit'>";
                         }
                         ?>
                         <input type="hidden" name="id" value="<?php foreach ($result as $row) {echo $row->id;} ?>">
-                        <label for="title">Título da ação:</label>
-                        <input value="<?php foreach($result as $row) {echo $row->title ;} ?>" required type="text" name="title" id="title">
-                        <br>
-                        <label for="thumbnail">Imagem da ação:</label>
-                        <input value="<?php foreach($result as $row) {echo $row->thumbnail ;} ?>" required type="file" name="thumbnail" id="thumbnail">
-                        <br>
-                        <label for="short_description">Breve descrição:</label>
-                        <textarea required name="short_description" id="short_description" cols="30" rows="10" maxlength="154"><?php foreach($result as $row) {echo $row->short_description ;} ?></textarea>
-                        <br>
-                        <label for="full_description">Descrição completa:</label>
-                        <textarea required name="full_description" id="full_description" cols="30" rows="10" maxlength="500"><?php foreach($result as $row) {echo $row->full_description ;} ?></textarea>
-                        <br>
-                        <label for="donated">O que pode ser doado:</label>
-                        <textarea required name="donated" id="donated" cols="30" rows="10" maxlength="500"><?php foreach($result as $row) {echo $row->donated ;} ?></textarea>
-                        <br>
-                        <label for="action_creator">Dono da ação:</label>
-                        <input value="<?php foreach($result as $row) {echo $row->action_creator ;} ?>" required type="text" name="action_creator" id="action_creator">
-                        <br>
-                        <label for="expiration_date">Data de expiração:</label>
-                        <input value="<?php foreach($result as $row) {echo $row->expiration_date ;} ?>" required type="date" name="expiration_date" id="expiration_date">
-                        <br>
-                        <input type="submit" value="Editar">
+                        <div class="form-group">
+                            <label for="title">Título da ação:</label>
+                            <input value="<?php foreach($result as $row) {echo $row->title ;} ?>" required type="text" class="form-control" name="title" id="title">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="thumbnail">Imagem da ação:</label>
+                            <input value="<?php foreach($result as $row) {echo $row->thumbnail ;} ?>" required type="file" class="form-control-file" name="thumbnail" id="thumbnail">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="short_description">Breve descrição:</label>
+                            <textarea required class="form-control" name="short_description" id="short_description" cols="30" rows="5" maxlength="154"><?php foreach($result as $row) {echo $row->short_description ;} ?></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="full_description">Descrição completa:</label>
+                            <textarea required class="form-control" name="full_description" id="full_description" cols="30" rows="5" maxlength="500"><?php foreach($result as $row) {echo $row->full_description ;} ?></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="donated">O que pode ser doado:</label>
+                            <textarea required class="form-control" name="donated" id="donated" cols="30" rows="5" maxlength="500"><?php foreach($result as $row) {echo $row->donated ;} ?></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="action_creator">Dono da ação:</label>
+                            <input value="<?php foreach($result as $row) {echo $row->action_creator ;} ?>" required type="text" class="form-control" name="action_creator" id="action_creator">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="expiration_date">Data de expiração:</label>
+                            <input value="<?php foreach($result as $row) {echo $row->expiration_date ;} ?>" required type="date" class="form-control" name="expiration_date" id="expiration_date">
+                        </div>
+
+                        <input type="submit" class="btn btn-primary" value="Editar">
+
                     </form>
                 </div>
             </div>        
