@@ -16,17 +16,22 @@
 
         if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin') {
             echo "
-                <a href='#' class='donationNow'>Editar</a>
+                <a href='./editActions.php?id=".$row->id."' class='donationNow'>Editar</a>
             ";
         }
         
-        echo "
-            <a href='./contribuition.php?id=".$row->id."' class='donationNow'>Contribuir agora</a>
-        ";
+        if (!isset($_SESSION['id'])) {
+            echo "<a href='./login.php' class='donationNow'>Contribuir agora</a>";
+        } else {
+            echo "<a href='./contribuition.php?id=".$row->id."' class='donationNow'>Contribuir agora</a>";
+        }
 
         if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin') {
             echo "
-                <a href='#' class='donationNow'>Excluir</a>
+                <a 
+                    href=\"javascript:void(0)\" onclick=\"if(confirm('Tem certeza que deseja excluir essa ação?')){window.location='../Controllers/AdminActions.php?id=".$row->id."&acao=delete';}\" class='donationNow'>
+                    Excluir
+                </a>
             ";
         }
 

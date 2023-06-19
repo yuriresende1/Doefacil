@@ -37,6 +37,40 @@
         }
     }
 
+    function editAction($conn) {
+        $title = $_POST['title'];
+        $short_description = $_POST['short_description'];
+        $full_description = $_POST['full_description'];
+        $donated = $_POST['donated'];
+        $action_creator = $_POST['action_creator'];
+        $expiration_date = $_POST['expiration_date'];
+
+        $sql = "UPDATE acoes SET title='{$title}', short_description='{$short_description}', full_description='{$full_description}', donated='{$donated}',  action_creator='{$action_creator}', expiration_date='{$expiration_date}' WHERE id=".$_REQUEST['id']."";
+
+        $stmt = $conn->query($sql);
+
+        if($stmt) {
+            showAlert('Sucesso');
+            redirect('../Views/donations.php');
+        } else {
+            showAlert('Erro');
+            redirect('../Views/donations.php');
+        }
+    }
+
+    function deleteAction($conn) {
+        $sql = "DELETE FROM acoes WHERE id=".$_REQUEST["id"];
+        $stmt = $conn->query($sql);
+
+        if ($stmt) {
+            showAlert('Ação deletada');
+            redirect('../Views/donations.php');
+        } else {
+            showAlert('Erro ao deletar ação');
+            redirect('../Views/donations.php');
+        }
+    }
+
     function requestAction() {
         $title = $_POST['title'];
         $short_description = $_POST['short_description'];
@@ -70,6 +104,14 @@
         
         case 'request':
             requestAction($conn);
+            break;
+        
+        case 'edit':
+            editAction($conn);
+            break;
+        
+        case 'delete':
+            deleteAction($conn);
             break;
     }
 ?>

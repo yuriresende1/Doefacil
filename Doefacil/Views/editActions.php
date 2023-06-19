@@ -1,5 +1,9 @@
 <?php
     include('../Models/DoeFacil.php');
+
+    $sql = "SELECT * FROM acoes WHERE id=".$_REQUEST["id"];
+    $stmt = $conn->query($sql);
+    $result = $stmt->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../assets/css/contribuition.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <title>Contribuir Agora</title>
+        <title>Edição de dados</title>
     </head>
     <body>
         <header>
@@ -19,13 +23,13 @@
                         <li><a href="../index.php">Início</a></li>
                         <li><a href="#">Sobre nós</a></li>
                         <li><a href="./donations.php">Ações beneficentes</a></li>
-                        <li><a href="./createActions.php">Criar ação</a></li>
+                        <li><a href="#">Criar ação</a></li>
                         <?php
                             if (session_start()){
                                 if (isset($_SESSION['username'])) {
                                     $username = $_SESSION['username'];
                                     echo "<li><a href='./profile.php'>{$username}</a></li>";
-                                    echo "<li><a href='./Controllers/Login.php?acao=logout'>Logout</a></li>";
+                                    echo "<li><a href='../Controllers/Login.php?acao=logout'>Logout</a></li>";
                                 } else {
                                     echo "<li><a href='./Views/login.php'>Login</a></li>";
                                 }
@@ -38,41 +42,37 @@
         <hr class="styled-hr">
         <main>
             <div class="container">
-                <div>
-                    <?php
-                        include('../Controllers/Contribuition.php');
-                    ?>  
-                </div>  
-                <div class="form">
-                    <h2>Preencha os campos abaixo</h2>
-                    <form action="" method="post">
-                        <div class="form-group">
-                            <label for="item">O que você quer doar?</label>
-                            <input type="text" class="form-control" name="item" id="item" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="quantity">Informe a quantidade:</label>
-                            <input type="text" class="form-control" name="quantity" id="quantity" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="reside">Reside em Viçosa?</label>
-                            <select class="form-control" name="reside" id="reside" required>
-                                <option value="sim">Sim</option>
-                                <option value="nao">Não</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="delivery">Prefere que busquemos a doação (Em caso de residência em Viçosa) ou prefere enviar por correio?</label>
-                            <select class="form-control" name="delivery" id="delivery" required>
-                                <option value="busca">Busca</option>
-                                <option value="correio">Correio</option>
-                            </select>
-                        </div>
-                        
-                        <input type="submit" class="btn btn-primary" value="Doar">
+                <h2>entenda como funciona</h2>
+                <div class="container1">
+                    <h2>Cadastrar nova ação</h2>
+                    <form action="../Controllers/AdminActions.php" method="post" enctype="multipart/form-data">
+                        <?php if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin') {
+                            echo "<input type='hidden' name='acao' value='edit'>";
+                        }
+                        ?>
+                        <input type="hidden" name="id" value="<?php foreach ($result as $row) {echo $row->id;} ?>">
+                        <label for="title">Título da ação:</label>
+                        <input value="<?php foreach($result as $row) {echo $row->title ;} ?>" required type="text" name="title" id="title">
+                        <br>
+                        <label for="thumbnail">Imagem da ação:</label>
+                        <input value="<?php foreach($result as $row) {echo $row->thumbnail ;} ?>" required type="file" name="thumbnail" id="thumbnail">
+                        <br>
+                        <label for="short_description">Breve descrição:</label>
+                        <textarea required name="short_description" id="short_description" cols="30" rows="10" maxlength="154"><?php foreach($result as $row) {echo $row->short_description ;} ?></textarea>
+                        <br>
+                        <label for="full_description">Descrição completa:</label>
+                        <textarea required name="full_description" id="full_description" cols="30" rows="10" maxlength="500"><?php foreach($result as $row) {echo $row->full_description ;} ?></textarea>
+                        <br>
+                        <label for="donated">O que pode ser doado:</label>
+                        <textarea required name="donated" id="donated" cols="30" rows="10" maxlength="500"><?php foreach($result as $row) {echo $row->donated ;} ?></textarea>
+                        <br>
+                        <label for="action_creator">Dono da ação:</label>
+                        <input value="<?php foreach($result as $row) {echo $row->action_creator ;} ?>" required type="text" name="action_creator" id="action_creator">
+                        <br>
+                        <label for="expiration_date">Data de expiração:</label>
+                        <input value="<?php foreach($result as $row) {echo $row->expiration_date ;} ?>" required type="date" name="expiration_date" id="expiration_date">
+                        <br>
+                        <input type="submit" value="Editar">
                     </form>
                 </div>
             </div>        
@@ -108,3 +108,4 @@
         </footer>
     </body>
 </html>
+

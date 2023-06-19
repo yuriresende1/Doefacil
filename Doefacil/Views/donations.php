@@ -19,8 +19,8 @@
               <ul>
                   <li><a href="../index.php">Início</a></li>
                   <li><a href="#">Sobre nós</a></li>
-                  <li><a href="#">Ações Beneficentes</a></li>
-                  <li><a href="./createActions.php">Criar Ação</a></li>
+                  <li><a href="#">Ações beneficentes</a></li>
+                  <li><a href="./createActions.php">Criar ação</a></li>
                   <?php
                       if (session_start()){
                           if (isset($_SESSION['username'])) {

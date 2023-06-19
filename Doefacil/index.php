@@ -20,8 +20,8 @@
                     <ul>
                         <li><a href="#">Início</a></li>
                         <li><a href="#">Sobre nós</a></li>
-                        <li><a href="./Views/donations.php">Ações Beneficentes</a></li>
-                        <li><a href="./Views/createActions.php">Criar Ação</a></li>
+                        <li><a href="./Views/donations.php">Ações beneficentes</a></li>
+                        <li><a href="./Views/createActions.php">Criar ação</a></li>
                         <?php
                             if (session_start()){
                                 if (isset($_SESSION['username'])) {
