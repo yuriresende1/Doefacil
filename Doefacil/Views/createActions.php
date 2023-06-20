@@ -7,7 +7,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../assets/css/contribuition.css">
+        <link rel="stylesheet" href="../assets/css/createActions.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <title>Contribuir Agora</title>
     </head>
@@ -24,7 +25,7 @@
                             if (session_start()){
                                 if (isset($_SESSION['username'])) {
                                     $username = $_SESSION['username'];
-                                    echo "<li><a href='./profile.php'>{$username}</a></li>";
+                                    echo "<li><a href='./situationDonation.php'>{$username}</a></li>";
                                     echo "<li><a href='../Controllers/Login.php?acao=logout'>Logout</a></li>";
                                 } else {
                                     echo "<li><a href='./Views/login.php'>Login</a></li>";
@@ -39,56 +40,196 @@
         <main>
             <div class="container">
                 <h2>Entenda como funciona</h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum exercitationem ipsa voluptatibus eligendi soluta numquam dolores ut accusantium enim culpa error totam odio libero consequatur nobis voluptatum, molestias atque modi. EXPLICAÇÃO DE COMO FUNCIONA PARA PEDIR PARA CRIAR UMA AÇÃO</p>
-                <div class="container1">
-                    <h2 class="text-center">Cadastrar nova ação</h2>
-                    <form action="../Controllers/AdminActions.php" method="post" enctype="multipart/form-data">
-                        <?php if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin') {
-                            echo "<input type='hidden' name='acao' value='insert'>";
-                        } else {
-                            echo "<input type='hidden' name='acao' value='request'>";
-                        }
-                        ?>
-                        <div class="form-group">
-                            <label for="title">Título da ação:</label>
-                            <input required type="text" class="form-control" name="title" id="title">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="thumbnail">Imagem da ação:</label>
-                            <input required type="file" class="form-control-file" name="thumbnail" id="thumbnail">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="short_description">Breve descrição:</label>
-                            <textarea required class="form-control" name="short_description" id="short_description" cols="30" rows="5" maxlength="154"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="full_description">Descrição completa:</label>
-                            <textarea required class="form-control" name="full_description" id="full_description" cols="30" rows="5" maxlength="500"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="donated">O que pode ser doado:</label>
-                            <textarea required class="form-control" name="donated" id="donated" cols="30" rows="5" maxlength="500"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="action_creator">Dono da ação:</label>
-                            <input required type="text" class="form-control" name="action_creator" id="action_creator">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="expiration_date">Data de expiração:</label>
-                            <input required type="date" class="form-control" name="expiration_date" id="expiration_date">
-                        </div>
-
-                        <input type="submit" class="btn btn-primary" value="Cadastrar">
-
-                    </form>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum exercitationem ipsa voluptatibus eligendi soluta numquam dolores ut accusantium enim culpa error totam odio libero consequatur nobis voluptatum, molestias atque modi. EXPLICAÇÃO DE COMO FUNCIONA PARA PEDIR PARA CRIAR UMA AÇÃO
+                </p>
+            </div>    
+            <div class="container">
+                <h2 class="text-center">Cadastrar nova ação</h2>
+                <ul class="nav nav-tabs mt-5">
+                    <h3>Escolha como criar a ação: </h3>
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pessoaFisica-tab" data-bs-toggle="tab" href="#pessoaFisica">Pessoa Física</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pessoaJuridica-tab" data-bs-toggle="tab" href="#pessoaJuridica">Pessoa Jurídica</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="pessoaFisica">
+                        <form action="../Controllers/AdminActions.php" method="post">
+                            <?php if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin') {
+                                echo "<input type='hidden' name='acao' value='insert'>";
+                            } else {
+                                echo "<input type='hidden' name='acao' value='request'>";
+                            }
+                            ?>
+                            <input type="hidden" name="tipoPessoa" value="PF">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nome:</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="CPF" class="form-label">CPF:</label>
+                                <input type="text" class="form-control" id="CPF" name="CPF" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">E-mail:</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contact_number" class="form-label">Telefone:</label>
+                                <input type="text" class="form-control" id="contact_number" name="contact_number" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Endereço:</label>
+                                <input type="text" class="form-control" id="address" name="address" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="number" class="form-label">Número:</label>
+                                <input type="text" class="form-control" id="number" name="number" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="city" class="form-label">Cidade:</label>
+                                <input type="text" class="form-control" id="city" name="city" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="state" class="form-label">Estado:</label>
+                                <input type="text" class="form-control" id="state" name="state" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="country" class="form-label">País:</label>
+                                <input type="text" class="form-control" id="country" name="country" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="birthplace" class="form-label">Local de Nascimento:</label>
+                                <input type="text" class="form-control" id="birthplace" name="birthplace" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="family_total_income" class="form-label">Renda Familiar Total:</label>
+                                <input type="text" class="form-control" id="family_total_income" name="family_total_income" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="donation_objective" class="form-label">Objetivo da Doação:</label>
+                                <input type="text" class="form-control" id="donation_objective" name="donation_objective" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Título da ação:</label>
+                                <input required type="text" class="form-control" name="title" id="title">
+                            </div>
+                            <div class="form-group">
+                                <label for="short_description">Breve descrição:</label>
+                                <textarea required class="form-control" name="short_description" id="short_description" cols="30" rows="5" maxlength="154"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="full_description">Descrição completa:</label>
+                                <textarea required class="form-control" name="full_description" id="full_description" cols="30" rows="5" maxlength="500"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="donated">O que pode ser doado:</label>
+                                <textarea required class="form-control" name="donated" id="donated" cols="30" rows="5" maxlength="500"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="action_creator">Dono da ação:</label>
+                                <input required type="text" class="form-control" name="action_creator" id="action_creator">
+                            </div>
+                            <div class="form-group">
+                                <label for="expiration_date">Data de expiração:</label>
+                                <input required type="date" class="form-control" name="expiration_date" id="expiration_date">
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="Cadastrar">
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="pessoaJuridica">
+                    <form action="../Controllers/AdminActions.php" method="post">
+                            <?php if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin') {
+                                echo "<input type='hidden' name='acao' value='insert'>";
+                            } else {
+                                echo "<input type='hidden' name='acao' value='request'>";
+                            }
+                            ?>
+                            <input type="hidden" name="tipoPessoa" value="PJ">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nome:</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="CNPJ" class="form-label">CNPJ:</label>
+                                <input type="text" class="form-control" id="CNPJ" name="CNPJ" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">E-mail:</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Endereço:</label>
+                                <input type="text" class="form-control" id="address" name="address" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="number" class="form-label">Número:</label>
+                                <input type="text" class="form-control" id="number" name="number" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="city" class="form-label">Cidade:</label>
+                                <input type="text" class="form-control" id="city" name="city" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="state" class="form-label">Estado:</label>
+                                <input type="text" class="form-control" id="state" name="state" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="country" class="form-label">País:</label>
+                                <input type="text" class="form-control" id="country" name="country" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contact_number" class="form-label">Telefone:</label>
+                                <input type="text" class="form-control" id="contact_number" name="contact_number" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mission_objective" class="form-label">Objetivo da Missão:</label>
+                                <input type="text" class="form-control" id="mission_objective" name="mission_objective" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="active_time" class="form-label">Tempo de Atividade:</label>
+                                <input type="text" class="form-control" id="active_time" name="active_time" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="main_activities" class="form-label">Atividades Principais:</label>
+                                <input type="text" class="form-control" id="main_activities" name="main_activities" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="size_entity_employees" class="form-label">Tamanho da Entidade (Número de Funcionários):</label>
+                                <input type="text" class="form-control" id="size_entity_employees" name="size_entity_employees" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Título da ação:</label>
+                                <input required type="text" class="form-control" name="title" id="title">
+                            </div>
+                            <div class="form-group">
+                                <label for="short_description">Breve descrição:</label>
+                                <textarea required class="form-control" name="short_description" id="short_description" cols="30" rows="5" maxlength="154"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="full_description">Descrição completa:</label>
+                                <textarea required class="form-control" name="full_description" id="full_description" cols="30" rows="5" maxlength="500"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="donated">O que pode ser doado:</label>
+                                <textarea required class="form-control" name="donated" id="donated" cols="30" rows="5" maxlength="500"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="action_creator">Dono da ação:</label>
+                                <input required type="text" class="form-control" name="action_creator" id="action_creator">
+                            </div>
+                            <div class="form-group">
+                                <label for="expiration_date">Data de expiração:</label>
+                                <input required type="date" class="form-control" name="expiration_date" id="expiration_date">
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="Cadastrar">
+                        </form>
+                    </div>
                 </div>
-            </div>        
+            </div>    
         </main>
         <footer>
             <h3>Atendimento</h3>
@@ -119,6 +260,11 @@
             <br>
             <p>&copy; 2023 GRUPO GLYMTECH Todos os direitos reservados.</p>
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+        <script>
+		    feather.replace();
+	    </script>
     </body>
 </html>
 

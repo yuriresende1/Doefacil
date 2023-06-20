@@ -8,6 +8,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../assets/css/contribuition.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <title>Contribuir Agora</title>
     </head>
@@ -19,13 +20,13 @@
                         <li><a href="../index.php">Início</a></li>
                         <li><a href="#">Sobre nós</a></li>
                         <li><a href="./donations.php">Ações beneficentes</a></li>
-                        <li><a href="./createActions.php">Criar ação</a></li>
+                        <li><a href="./createActions.php" target="_blank">Criar ação</a></li>
                         <?php
                             if (session_start()){
                                 if (isset($_SESSION['username'])) {
                                     $username = $_SESSION['username'];
-                                    echo "<li><a href='./profile.php'>{$username}</a></li>";
-                                    echo "<li><a href='./Controllers/Login.php?acao=logout'>Logout</a></li>";
+                                    echo "<li><a href='./situationDonation.php'>{$username}</a></li>";
+                                    echo "<li><a href='../Controllers/Login.php?acao=logout'>Logout</a></li>";
                                 } else {
                                     echo "<li><a href='./Views/login.php'>Login</a></li>";
                                 }

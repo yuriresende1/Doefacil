@@ -20,12 +20,12 @@
                   <li><a href="../index.php">Início</a></li>
                   <li><a href="#">Sobre nós</a></li>
                   <li><a href="#">Ações beneficentes</a></li>
-                  <li><a href="./createActions.php">Criar ação</a></li>
+                  <li><a href="./createActions.php" target="_blank">Criar ação</a></li>
                   <?php
                       if (session_start()){
                           if (isset($_SESSION['username'])) {
                               $username = $_SESSION['username'];
-                              echo "<li><a href='./profile.php'>{$username}</a></li>";
+                              echo "<li><a href='./situationDonation.php'>{$username}</a></li>";
                               echo "<li><a href='../Controllers/Login.php?acao=logout'>Logout</a></li>";
                           } else {
                               echo "<li><a href='./login.php'>Login</a></li>";

@@ -71,29 +71,64 @@
         }
     }
 
-    function requestAction() {
-        $title = $_POST['title'];
-        $short_description = $_POST['short_description'];
-        $full_description = $_POST['full_description'];
-        $donated = $_POST['donated'];
-        $action_creator = $_POST['action_creator'];
-        $expiration_date = $_POST['expiration_date'];
+    function requestAction($conn) {
+        session_start();
 
-        $email = 'doefacilsite@gmail.com';
-        $subject = 'Solicitar criação de ação';
-        //colocar os dados do rementente aqui
-        $body = "Título: $title\n\nDescrição curta: $short_description\n\nDescrição completa: $full_description\n\nO que pode ser doado: $donated\n\nDono da ação: $action_creator\n\nData de expiração: $expiration_date\n\nNão se esquecça de anexar aqui a imagem da ação";
-
-        $mailto = "https://mail.google.com/mail/?view=cm&fs=1&to=" . urlencode($email) . "&su=" . urlencode($subject) . "&body=" . urlencode($body);
-
-        if (header("Location: $mailto")) {
-            showAlert('Solicitação enviada');
+        if (!isset($_SESSION['username'])) {
+            showAlert('É necessário estar logado para solicitar uma ação');
+            redirect('../Views/login.php');
         } else {
-            showAlert('Erro ao enviar a solicitação');
+
+            $tipo_pessoa = $_POST['tipoPessoa'];
+
+            if($tipo_pessoa === 'PF') {
+                $name = $_POST["name"];
+                $CPF = $_POST["CPF"];
+                $email = $_POST["email"];
+                $contact_number = $_POST["contact_number"];
+                $address = $_POST["address"];
+                $number = $_POST["number"];
+                $city = $_POST["city"];
+                $state = $_POST["state"];
+                $country = $_POST["country"];
+                $birthplace = $_POST["birthplace"];
+                $family_total_income = $_POST["family_total_income"];
+                $donation_objective = $_POST["donation_objective"];
+                $title = $_POST["title"];
+                $short_description = $_POST["short_description"];
+                $full_description = $_POST["full_description"];
+                $donated = $_POST["donated"];
+                $action_creator = $_POST["action_creator"];
+                $expiration_date = $_POST["expiration_date"];
+
+                $sql = "INSERT INTO beneficiary_natural_person (name, CPF, email, contact_number, address, number, city, state, country, birthplace, family_total_income, donation_objective, title, short_description, full_description, donated, action_creator, expiration_date) 
+                VALUES ('$name', '$CPF', '$email', '$contact_number', '$address', '$number', '$city', '$state', '$country', '$birthplace', '$family_total_income', '$donation_objective', '$title', '$short_description', '$full_description', '$donated', '$action_creator', '$expiration_date')";
+
+                $stmt = $conn->query($sql);
+
+                if($stmt) {
+                    $email = 'doefacilsite@gmail.com';
+                    $subject = 'Solicitar criação de ação';
+
+                    // Inserir no body as informações de quem está enviando
+                    $body = "Título: $title\n\nDescrição curta: $short_description\n\nDescrição completa: $full_description\n\nO que pode ser doado: $donated\n\nDono da ação: $action_creator\n\nData de expiração: $expiration_date\n\nNão se esquecça de anexar aqui a imagem da ação";
+
+                    $mailto = "https://mail.google.com/mail/?view=cm&fs=1&to=" . urlencode($email) . "&su=" . urlencode($subject) . "&body=" . urlencode($body);
+
+                    if (header("Location: $mailto")) {
+                        showAlert('Solicitação enviada');
+                    } else {
+                        showAlert('Erro ao enviar a solicitação');
+                    }
+                    
+                    redirect('../index.php');
+                    exit();
+                } else {
+                    showAlert('Erro ao enviar a solicitação');
+                    redirect('../index.php');
+                }
+            }
         }
-        
-        redirect('../index.php');
-        exit();
     }
 
     $action = $_REQUEST["acao"];
