@@ -1,0 +1,167 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body { /* corpo da pagina */
+    background-color: #ffffff;
+}
+
+header { /* cabeçalho */
+    position: fixed;
+    height: 80px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 10px;
+    z-index: 9999;
+    background-size: 100%;
+    background-image: url(./Doefacillogo.png);
+    background-size: contain;
+    background-position: 15%;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav {  /* botões */
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 5px;
+    border-radius: 30px;
+    padding: 10px;
+    display: inline-block; /* Adicionado para alinhar os botões lado a lado */
+}
+
+nav ul li a {
+    display: block;
+    padding: 2px;
+    text-decoration: none;
+    color: rgb(100, 100, 100);
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #59b3fd;
+}
+
+
+.styled-hr {
+    border: 1px solid #d4d4d4;
+    margin: 1px 0;
+}
+
+h1 {
+    font-size: 34px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1[id="h1id1"] {
+    margin-top: 80px;
+}
+
+h1[id="h1id2"] {
+    margin-top: 80px;
+    margin-bottom: 50px;
+}
+
+h1[id="h1id3"] {
+    margin-top: 80px;
+    margin-bottom: 50px;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 50px;
+
+}
+
+.descrição {
+    text-align: justify;
+    margin: 50px;
+    margin-right: 127px;
+    margin-left: 127px;
+    margin-bottom: 50px;
+    background-color: #f8faff;
+    padding: 20px;
+    font-weight: 700;
+    border-color: transparent;
+    border-style: solid;
+    line-height: 1.3;
+    font-size: 18px;    
+}   
+
+.container {
+    display: flex;
+    text-align: center;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.item {
+    display: flex;
+    width: 400px;
+    height: 550px;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 1px;
+    transition: 0.5s;
+    
+}
+
+.item img {
+    width: 250px;
+    height: 270px;
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+.item p {
+    margin-left: 1px;
+    text-align: center;
+    font-size: 38px;
+}
+
+.item:hover {
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.descimg {
+    width: 100%;
+    height: 120px;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+footer {
+	background-color: #59b3fd;
+	color: #fff;
+	padding: 1px;
+	text-align: center;
+	margin-top:10px;
+}
+
+.social a{
+    font-size: 30px;
+    color: #f7f6f6;
+    margin-right: 20px;
+}
+
+.social a:hover{
+    color: #003c79;
+}
