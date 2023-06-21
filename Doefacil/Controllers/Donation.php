@@ -30,6 +30,7 @@
         $id_benefited_action = $_POST['id_benefited_action'];	
         $myId = $_POST['myId'];
         $email_donor = $_POST['email_donor'];
+        $nameAction = $_POST['nameAction'];
 
         $sql = "INSERT INTO donator_natural_person (name, CPF,	email, contact_number, marital_status, address, number,	city, state, country, birthplace, notifications, recurring_donor, item,	quantity, reside, delivery, id_benefited_action) VALUES ('{$namePF}', '{$cpf}', '{$emailPF}', '{$contactNumberPF}', '{$maritalStatusPF}', '{$addressPF}', '{$numberPF}', '{$cityPF}', '{$statePF}', '{$countryPF}', '{$birthplacePF}', '{$notificationsPF}', '{$recurringDonorPF}', '{$item}', '{$quantity}', '{$reside}', '{$delivery}', '{$id_benefited_action}')";
 
@@ -37,7 +38,7 @@
 
         if ($stmt == true) {
             if($delivery === 'correio') {
-                $sql_donation = "INSERT INTO situation_donations (donor, id_donor, recipient, status_donation, information, email_donor)  VALUES ('{$namePF}', '{$myId}', '{$id_benefited_action}', 'Pendente', 'Obrigado pela iniciativa, vá até a agencia de correios e envie para: Rua Teste, 65, Viçosa - MG', '{$email_donor}')";
+                $sql_donation = "INSERT INTO situation_donations (donor, id_donor, recipient, status_donation, information, email_donor)  VALUES ('{$namePF}', '{$myId}', '{$nameAction}', 'Pendente', 'Obrigado pela iniciativa, vá até a agencia de correios e envie para: Rua Teste, 65, Viçosa - MG', '{$email_donor}')";
     
                 $stmt_donation = $conn->query($sql_donation);
     
@@ -49,7 +50,7 @@
                     redirect('../Views/contribuition.php');
                 }
             } else {
-                $sql_donation = "INSERT INTO situation_donations (donor, id_donor, recipient, status_donation, information, email_donor)  VALUES ('{$namePF}', '{$myId}', '{$id_benefited_action}', 'Pendente', 'Obrigado pela iniciativa, Iremos verifcar suas informações de endereço e entraremos em contato no seu email sobre quando podemos ir pegar as doações', '{$email_donor}')";
+                $sql_donation = "INSERT INTO situation_donations (donor, id_donor, recipient, status_donation, information, email_donor)  VALUES ('{$namePF}', '{$myId}', '{$nameAction}', 'Pendente', 'Obrigado pela iniciativa, Iremos verifcar suas informações de endereço e entraremos em contato no seu email sobre quando podemos ir pegar as doações', '{$email_donor}')";
     
                 $stmt_donation = $conn->query($sql_donation);
     
@@ -85,6 +86,7 @@
         $id_benefited_action = $_POST['id_benefited_action'];	
         $myId = $_POST['myId'];
         $email_donor = $_POST['email_donor'];
+        $nameActionPJ = $_POST['nameActionPJ'];
 
         $sql = "INSERT INTO donator_legal_person (name, cnpj, email, contact_number, address, number, city, state, country, notifications, recurring_donor, item, quantity, reside, delivery, id_benefited_action) VALUES ('{$namePJ}', '{$cnpJ}', '{$emailPJ}', '{$contactNumberPJ}', '{$addressPJ}', '{$numberPJ}', '{$cityPJ}', '{$statePJ}', '{$countryPJ}', '{$notificationsPJ}', '{$recurringDonorPJ}', '{$item}', '{$quantity}', '{$reside}', '{$delivery}', '{$id_benefited_action}')";
 
@@ -92,7 +94,7 @@
 
         if ($stmt == true) {
             if($delivery === 'correio') {
-                $sql_donation = "INSERT INTO situation_donations (donor, id_donor, recipient, status_donation, information, email_donor)  VALUES ('{$namePJ}', '{$myId}', '{$id_benefited_action}', 'Pendente', 'Obrigado pela iniciativa, vá até a agencia de correios e envie para: Rua Teste, 65, Viçosa - MG, assim que as doações forem efetivadas atualizaremos a situação', '{$email_donor}')";
+                $sql_donation = "INSERT INTO situation_donations (donor, id_donor, recipient, status_donation, information, email_donor)  VALUES ('{$namePJ}', '{$myId}', '{$nameActionPJ}', 'Pendente', 'Obrigado pela iniciativa, vá até a agencia de correios e envie para: Rua Teste, 65, Viçosa - MG, assim que as doações forem efetivadas atualizaremos a situação', '{$email_donor}')";
     
                 $stmt_donation = $conn->query($sql_donation);
     
@@ -104,7 +106,7 @@
                     redirect('../Views/contribuition.php');
                 }
             } else {
-                $sql_donation = "INSERT INTO situation_donations (donor, id_donor, recipient, status_donation, information, email_donor)  VALUES ('{$namePJ}', '{$myId}', '{$id_benefited_action}', 'Pendente', 'Obrigado pela iniciativa, Iremos verifcar suas informações de endereço e entraremos em contato no seu email sobre quando podemos ir pegar as doações, assim que as doações forem efetivadas atualizaremos a situação', '{$email_donor}')";
+                $sql_donation = "INSERT INTO situation_donations (donor, id_donor, recipient, status_donation, information, email_donor)  VALUES ('{$namePJ}', '{$myId}', '{$nameActionPJ}', 'Pendente', 'Obrigado pela iniciativa, Iremos verifcar suas informações de endereço e entraremos em contato no seu email sobre quando podemos ir pegar as doações, assim que as doações forem efetivadas atualizaremos a situação', '{$email_donor}')";
     
                 $stmt_donation = $conn->query($sql_donation);
     

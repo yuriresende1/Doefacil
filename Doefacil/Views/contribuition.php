@@ -1,5 +1,6 @@
 <?php
     include('../Models/DoeFacil.php');
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -20,16 +21,20 @@
                         <li><a href="../index.php">Início</a></li>
                         <li><a href="#">Sobre nós</a></li>
                         <li><a href="./donations.php">Ações beneficentes</a></li>
-                        <li><a href="./createActions.php" target="_blank">Criar ação</a></li>
                         <?php
-                            if (session_start()){
-                                if (isset($_SESSION['username'])) {
-                                    $username = $_SESSION['username'];
-                                    echo "<li><a href='./situationDonation.php'>{$username}</a></li>";
-                                    echo "<li><a href='../Controllers/Login.php?acao=logout'>Logout</a></li>";
-                                } else {
-                                    echo "<li><a href='./Views/login.php'>Login</a></li>";
-                                }
+                            if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin'){
+                                echo "<li><a href='./createActionsAdmin.php'>Criar ação</a></li>";
+                            } else {
+                                echo "<li><a target='_blank' href='./createActions.php'>Criar ação</a></li>";
+                            }
+                        ?>
+                        <?php
+                            if (isset($_SESSION['username'])) {
+                                $username = $_SESSION['username'];
+                                echo "<li><a href='./situationDonation.php'>{$username}</a></li>";
+                                echo "<li><a href='../Controllers/Login.php?acao=logout'>Logout</a></li>";
+                            } else {
+                                echo "<li><a href='./Views/login.php'>Login</a></li>";
                             }
                         ?>
                     </ul>
@@ -61,6 +66,11 @@
                                 <form method="post" action="../Controllers/Donation.php">
                                     <input type="hidden" name="acao" value="PF">
                                     <input type="hidden" name="id_benefited_action" value="<?php echo $_REQUEST["id"];?>">
+                                    <input type="hidden" name="nameAction" value="">
+                                    <script>
+                                        let nameAction = document.querySelector('.titleAction').innerText
+                                        document.querySelector('input[name="nameAction"]').value = nameAction;
+                                    </script>
                                     <input type="hidden" name="myId" value="<?php echo $_SESSION['id']; ?>">
                                     <input type="hidden" name="email_donor" value="<?php echo $_SESSION['email']; ?>">
                                     <div class="mb-3">
@@ -149,6 +159,11 @@
                                     <input type="hidden" name="id_benefited_action" value="<?php echo $_REQUEST["id"];?>">
                                     <input type="hidden" name="myId" value="<?php echo $_SESSION['id']; ?>">
                                     <input type="hidden" name="email_donor" value="<?php echo $_SESSION['email']; ?>">
+                                    <input type="hidden" name="nameActionPJ" value="">
+                                    <script>
+                                        let nameActionPJ = document.querySelector('.titleAction').innerText
+                                        document.querySelector('input[name="nameActionPJ"]').value = nameActionPJ;
+                                    </script>
                                     <div class="mb-3">
                                         <label for="namePJ" class="form-label">Nome:</label>
                                         <input type="text" class="form-control" id="namePJ" name="namePJ" placeholder="Insira o nome da empresa">

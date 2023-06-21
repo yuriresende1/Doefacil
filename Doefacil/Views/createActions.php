@@ -1,5 +1,6 @@
 <?php
     include('../Models/DoeFacil.php');
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -20,16 +21,20 @@
                         <li><a href="../index.php">Início</a></li>
                         <li><a href="#">Sobre nós</a></li>
                         <li><a href="./donations.php">Ações beneficentes</a></li>
-                        <li><a href="#">Criar ação</a></li>
                         <?php
-                            if (session_start()){
-                                if (isset($_SESSION['username'])) {
-                                    $username = $_SESSION['username'];
-                                    echo "<li><a href='./situationDonation.php'>{$username}</a></li>";
-                                    echo "<li><a href='../Controllers/Login.php?acao=logout'>Logout</a></li>";
-                                } else {
-                                    echo "<li><a href='./Views/login.php'>Login</a></li>";
-                                }
+                            if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin'){
+                                echo "<li><a href='./createActionsAdmin.php'>Criar ação</a></li>";
+                            } else {
+                                echo "<li><a target='_blank' href='./createActions.php'>Criar ação</a></li>";
+                            }
+                        ?>
+                        <?php
+                            if (isset($_SESSION['username'])) {
+                                $username = $_SESSION['username'];
+                                echo "<li><a href='./situationDonation.php'>{$username}</a></li>";
+                                echo "<li><a href='../Controllers/Login.php?acao=logout'>Logout</a></li>";
+                            } else {
+                                echo "<li><a href='./Views/login.php'>Login</a></li>";
                             }
                         ?>
                     </ul>
@@ -41,7 +46,15 @@
             <div class="container">
                 <h2>Entenda como funciona</h2>
                 <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum exercitationem ipsa voluptatibus eligendi soluta numquam dolores ut accusantium enim culpa error totam odio libero consequatur nobis voluptatum, molestias atque modi. EXPLICAÇÃO DE COMO FUNCIONA PARA PEDIR PARA CRIAR UMA AÇÃO
+                    O Doe Fácil é um site que torna o processo de doação simples e eficiente, tanto para pessoas físicas quanto para pessoas jurídicas. Aqui, você encontrará todas as informações necessárias para fazer sua contribuição de forma descomplicada.
+
+                    Se você é uma pessoa física, basta preencher seus dados pessoais, como nome, CPF, e-mail, telefone, endereço, cidade, estado, país, local de nascimento e renda familiar total. Em seguida, especifique o objeto da doação, forneça um título e uma breve descrição, além de indicar quais itens ou recursos podem ser doados. Por fim, identifique o responsável pela ação de doação e estabeleça uma data de expiração para a doação.
+
+                    Para pessoas jurídicas, é necessário informar o nome da empresa, CNPJ, e-mail, telefone, endereço, cidade, estado e país. Além disso, descreva o objetivo da missão da entidade, tempo de atividade, atividades principais e tamanho da entidade. Assim como nas doações de pessoas físicas, especifique o título e a breve descrição da ação, indique o que pode ser doado, identifique o responsável e estabeleça uma data de expiração.
+
+                    Após preencher os campos necessários, você terá a oportunidade de revisar os dados antes de finalizar a doação. Assim que o processo for concluído, você receberá um comprovante por e-mail. O Doe Fácil não apenas atende pessoas físicas e jurídicas, mas também se dedica a auxiliar instituições beneficentes e ONGs. Se você representa uma organização dessa natureza, o site oferece suporte para divulgar suas ações e receber doações de forma transparente. A plataforma possibilita conectar sua instituição a potenciais doadores, ampliando o alcance e o impacto de suas atividades em prol do bem comum.
+
+                    Portanto, seja você uma pessoa física ou jurídica, o Doe Fácil é seu parceiro confiável para realizar contribuições significativas. Sua generosidade pode fazer a diferença na vida de muitas pessoas e comunidades.
                 </p>
             </div>    
             <div class="container">
@@ -65,6 +78,8 @@
                             }
                             ?>
                             <input type="hidden" name="tipoPessoa" value="PF">
+                            <input type="hidden" name="myId" value="<?php echo isset($_SESSION['id']) ? $_SESSION['id'] : ''; ?>">
+                            <input type="hidden" name="email_creator" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nome:</label>
                                 <input type="text" class="form-control" id="name" name="name" required>
@@ -149,13 +164,15 @@
                             }
                             ?>
                             <input type="hidden" name="tipoPessoa" value="PJ">
+                            <input type="hidden" name="myId" value="<?php echo isset($_SESSION['id']) ? $_SESSION['id'] : '' ; ?>">
+                            <input type="hidden" name="email_creator" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nome:</label>
                                 <input type="text" class="form-control" id="name" name="name" required>
                             </div>
                             <div class="mb-3">
-                                <label for="CNPJ" class="form-label">CNPJ:</label>
-                                <input type="text" class="form-control" id="CNPJ" name="CNPJ" required>
+                                <label for="cnpj" class="form-label">CNPJ:</label>
+                                <input type="text" class="form-control" id="cnpj" name="cnpj" required>
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">E-mail:</label>

@@ -8,7 +8,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../assets/css/situationDonation.css">
+        <link rel="stylesheet" href="../assets/css/createActions.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <title>Contribuir Agora</title>
@@ -42,12 +42,48 @@
             </div>
         </header>
         <hr class="styled-hr">
-        <main>
+        <main> 
             <div class="container">
-                <?php
-                    include('../Controllers/SituationDonation.php');
-                ?>
-            </div>         
+                <h2 class="text-center">Cadastrar nova ação</h2>
+                <div class="container">
+                    <form action="../Controllers/AdminActions.php" method="post" enctype="multipart/form-data">
+                        <?php 
+                            if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin') {
+                                echo "<input type='hidden' name='acao' value='insert'>";
+                            } 
+                        ?>
+                        <div class="form-group">
+                            <label for="title">Título da ação:</label>
+                            <input required type="text" class="form-control" name="title" id="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="thumbnail">Imagem da ação:</label>
+                            <input type="file" name="thumbnail" id="thumbnail"> 
+                        </div>
+                        <div class="form-group">
+                            <label for="short_description">Breve descrição:</label>
+                            <textarea required class="form-control" name="short_description" id="short_description" cols="30" rows="5" maxlength="154"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="full_description">Descrição completa:</label>
+                            <textarea required class="form-control" name="full_description" id="full_description" cols="30" rows="5" maxlength="500"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="donated">O que pode ser doado:</label>
+                            <textarea required class="form-control" name="donated" id="donated" cols="30" rows="5" maxlength="500"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="action_creator">Dono da ação:</label>
+                            <input required type="text" class="form-control" name="action_creator" id="action_creator">
+                        </div>
+                        <div class="form-group">
+                            <label for="expiration_date">Data de expiração:</label>
+                            <input required type="date" class="form-control" name="expiration_date" id="expiration_date">
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Cadastrar">
+                    </form>
+                </div>
+            </div>    
         </main>
         <footer>
             <h3>Atendimento</h3>
@@ -85,3 +121,4 @@
 	    </script>
     </body>
 </html>
+
