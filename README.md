@@ -13,6 +13,4 @@ The main idea is to register users to receive donations, register users to make 
 through the site. Below is a link presenting the entire site and its functionalities.
 
 LINK >>>  https://youtu.be/ouowvAe_4kY
-LINK >>>  https://youtu.be/ouowvAe_4kY
-LINK >>>  https://youtu.be/ouowvAe_4kY
-LINK >>>  https://youtu.be/ouowvAe_4kY
+
