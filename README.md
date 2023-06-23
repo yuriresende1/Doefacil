@@ -10,7 +10,7 @@ Online donation website
 
 Doefacil is an online donation site that was developed by me and 3 colleagues during the 3rd period of the College of Systems Analysis and Development at Univiçosa - Viçosa MG.
 The main idea is to register users to receive donations, register users to make donations and also register charitable institutions to further increase the collection of donations
-through the site. Below is a link presenting the entire site and its functionalities.
+through the site. Below there is a link presenting the entire site and its functionalities.
 
 LINK >>>  https://youtu.be/ouowvAe_4kY
 
