@@ -17,9 +17,13 @@
     <header>
       <div class="botões">
           <nav>
-              <ul>
+              <ul class="listHeader">
+                <div>
+                  <img src="../assets/images/Doefacillogo.png" class="logo" alt="Logo do doefacil">
+                </div>
+                <div>
                   <li><a href="../index.php">Início</a></li>
-                  <li><a href="#">Sobre nós</a></li>
+                  <li><a href="./aboutUs.php">Sobre nós</a></li>
                   <li><a href="#">Ações beneficentes</a></li>
                   <?php
                       if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin'){
@@ -28,15 +32,18 @@
                           echo "<li><a target='_blank' href='./createActions.php'>Criar ação</a></li>";
                       }
                   ?>
+                </div>
+                <div class="userAndLogout">
                   <?php
-                      if (isset($_SESSION['username'])) {
-                          $username = $_SESSION['username'];
-                          echo "<li><a href='./situationDonation.php'>{$username}</a></li>";
-                          echo "<li><a href='../Controllers/Login.php?acao=logout'>Logout</a></li>";
-                      } else {
-                          echo "<li><a href='./Views/login.php'>Login</a></li>";
-                      }
+                    if (isset($_SESSION['username'])) {
+                        $username = $_SESSION['username'];
+                        echo "<li><a href='./situationDonation.php'>{$username}</a></li>";
+                        echo "<li><a href='../Controllers/Login.php?acao=logout'>Sair</a></li>";
+                    } else {
+                        echo "<li><a href='./Views/login.php'>Login</a></li>";
+                    }
                   ?>
+                </div>
               </ul>
           </nav>
       </div>

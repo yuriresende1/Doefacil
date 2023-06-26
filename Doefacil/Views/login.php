@@ -27,6 +27,7 @@
                 <hr>
                 <h5 class="card-title">Ainda não possui uma conta?</h5>
                 <button id="signup-button" class="btn-secondary">Cadastrar</button>
+                <a href="../index.php" class="backToIndex"><button class="btn-primary">Voltar a página inicial</button></a>
             </div>
             <div class="card form-card" id="signup-form">
                 <img src="../assets/images/Doefacillogo.png" alt="Imagem de Cadastro">

@@ -17,26 +17,33 @@
         <header>
             <div class="botões">
                 <nav>
-                    <ul>
-                        <li><a href="../index.php">Início</a></li>
-                        <li><a href="#">Sobre nós</a></li>
-                        <li><a href="./donations.php">Ações beneficentes</a></li>
-                        <?php
-                            if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin'){
-                                echo "<li><a href='./createActionsAdmin.php'>Criar ação</a></li>";
-                            } else {
-                                echo "<li><a target='_blank' href='./createActions.php'>Criar ação</a></li>";
-                            }
-                        ?>
-                        <?php
-                            if (isset($_SESSION['username'])) {
-                                $username = $_SESSION['username'];
-                                echo "<li><a href='./situationDonation.php'>{$username}</a></li>";
-                                echo "<li><a href='../Controllers/Login.php?acao=logout'>Logout</a></li>";
-                            } else {
-                                echo "<li><a href='./Views/login.php'>Login</a></li>";
-                            }
-                        ?>
+                    <ul class="listHeader">
+                        <div>
+                            <img src="../assets/images/Doefacillogo.png" class="logo" alt="Logo do doefacil">
+                        </div>
+                        <div>
+                            <li><a href="../index.php">Início</a></li>
+                            <li><a href="./aboutUs.php">Sobre nós</a></li>
+                            <li><a href="./donations.php">Ações beneficentes</a></li>
+                            <?php
+                                if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin'){
+                                    echo "<li><a href='./createActionsAdmin.php'>Criar ação</a></li>";
+                                } else {
+                                    echo "<li><a target='_blank' href='./createActions.php'>Criar ação</a></li>";
+                                }
+                            ?>
+                        </div>
+                        <div class="userAndLogout">
+                            <?php
+                                if (isset($_SESSION['username'])) {
+                                    $username = $_SESSION['username'];
+                                    echo "<li><a href='./situationDonation.php'>{$username}</a></li>";
+                                    echo "<li><a href='../Controllers/Login.php?acao=logout'>Sair</a></li>";
+                                } else {
+                                    echo "<li><a href='./Views/login.php'>Login</a></li>";
+                                }
+                            ?>
+                        </div>
                     </ul>
                 </nav>
             </div>
@@ -44,23 +51,29 @@
         <hr class="styled-hr">
         <main>
             <div class="container">
-                <h2>Entenda como funciona</h2>
-                <p>
-                    O Doe Fácil é um site que torna o processo de doação simples e eficiente, tanto para pessoas físicas quanto para pessoas jurídicas. Aqui, você encontrará todas as informações necessárias para fazer sua contribuição de forma descomplicada.
-
-                    Se você é uma pessoa física, basta preencher seus dados pessoais, como nome, CPF, e-mail, telefone, endereço, cidade, estado, país, local de nascimento e renda familiar total. Em seguida, especifique o objeto da doação, forneça um título e uma breve descrição, além de indicar quais itens ou recursos podem ser doados. Por fim, identifique o responsável pela ação de doação e estabeleça uma data de expiração para a doação.
-
-                    Para pessoas jurídicas, é necessário informar o nome da empresa, CNPJ, e-mail, telefone, endereço, cidade, estado e país. Além disso, descreva o objetivo da missão da entidade, tempo de atividade, atividades principais e tamanho da entidade. Assim como nas doações de pessoas físicas, especifique o título e a breve descrição da ação, indique o que pode ser doado, identifique o responsável e estabeleça uma data de expiração.
-
-                    Após preencher os campos necessários, você terá a oportunidade de revisar os dados antes de finalizar a doação. Assim que o processo for concluído, você receberá um comprovante por e-mail. O Doe Fácil não apenas atende pessoas físicas e jurídicas, mas também se dedica a auxiliar instituições beneficentes e ONGs. Se você representa uma organização dessa natureza, o site oferece suporte para divulgar suas ações e receber doações de forma transparente. A plataforma possibilita conectar sua instituição a potenciais doadores, ampliando o alcance e o impacto de suas atividades em prol do bem comum.
-
-                    Portanto, seja você uma pessoa física ou jurídica, o Doe Fácil é seu parceiro confiável para realizar contribuições significativas. Sua generosidade pode fazer a diferença na vida de muitas pessoas e comunidades.
-                </p>
+                <h2 class="text-center m-4">Entenda como funciona</h2>
+                <div class="informations">
+                    <p>
+                        O Doe Fácil é um site que torna o processo de doação simples e eficiente, tanto para pessoas físicas quanto para pessoas jurídicas. Aqui, você encontrará todas as informações necessárias para fazer sua contribuição de forma descomplicada.
+                    </p>
+                    <p>
+                        Se você é uma pessoa física, basta preencher seus dados pessoais, como nome, CPF, e-mail, telefone, endereço, cidade, estado, país, local de nascimento e renda familiar total. Em seguida, especifique o objeto da doação, forneça um título e uma breve descrição, além de indicar quais itens ou recursos podem ser doados. Por fim, identifique o responsável pela ação de doação e estabeleça uma data de expiração para a doação.
+                    </p>
+                    <p>
+                        Para pessoas jurídicas, é necessário informar o nome da empresa, CNPJ, e-mail, telefone, endereço, cidade, estado e país. Além disso, descreva o objetivo da missão da entidade, tempo de atividade, atividades principais e tamanho da entidade. Assim como nas doações de pessoas físicas, especifique o título e a breve descrição da ação, indique o que pode ser doado, identifique o responsável e estabeleça uma data de expiração.
+                    </p>
+                    <p>
+                        Após preencher os campos necessários, você terá a oportunidade de revisar os dados antes de finalizar a doação. Assim que o processo for concluído, você receberá um comprovante por e-mail. O Doe Fácil não apenas atende pessoas físicas e jurídicas, mas também se dedica a auxiliar instituições beneficentes e ONGs. Se você representa uma organização dessa natureza, o site oferece suporte para divulgar suas ações e receber doações de forma transparente. A plataforma possibilita conectar sua instituição a potenciais doadores, ampliando o alcance e o impacto de suas atividades em prol do bem comum.
+                    </p>
+                    <p>
+                        Portanto, seja você uma pessoa física ou jurídica, o Doe Fácil é seu parceiro confiável para realizar contribuições significativas. Sua generosidade pode fazer a diferença na vida de muitas pessoas e comunidades.
+                    </p>
+                </div>
             </div>    
             <div class="container">
-                <h2 class="text-center">Cadastrar nova ação</h2>
+                <h2 class="text-center mt-5">Cadastrar nova ação</h2>
                 <ul class="nav nav-tabs mt-5">
-                    <h3>Escolha como criar a ação: </h3>
+                    <h3 class="mr-3">Escolha como criar a ação: </h3>
                     <li class="nav-item">
                         <a class="nav-link active" id="pessoaFisica-tab" data-bs-toggle="tab" href="#pessoaFisica">Pessoa Física</a>
                     </li>
