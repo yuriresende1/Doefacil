@@ -12,45 +12,60 @@
       <title>Ações</title>
       <link rel="stylesheet" href="../assets/css/donations.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
       <link rel="shortcut icon" href="../assets/images/Doefacillogo.png" type="image/x-icon">
   </head>
   <body>
-    <header>
-      <div class="botões">
-          <nav>
-              <ul class="listHeader">
-                <div>
-                  <img src="../assets/images/Doefacillogo.png" class="logo" alt="Logo do doefacil">
+  <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container">
+                    <a class="navbar-brand" href="#">
+                        <img src="../assets/images/Doefacillogo.png" class="logo" alt="Logo do doefacil">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../index.php">Início</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./aboutUs.php">Sobre nós</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Ações beneficentes</a>
+                            </li>
+                            <?php
+                            if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin') {
+                                echo "<li class='nav-item'><a class='nav-link' href='./createActionsAdmin.php'>Criar ação</a></li>";
+                            } else {
+                                echo "<li class='nav-item'><a class='nav-link' target='_blank' href='./createActions.php'>Criar ação</a></li>";
+                            }
+                            ?>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <div id="aDireita">
+                                <li class="nav-item">
+                                    <?php
+                                    if (isset($_SESSION['username'])) {
+                                        $username = $_SESSION['username'];
+                                        echo "<a class='nav-link' href='./situationDonation.php'>{$username}</a>";
+                                        echo "<li class='nav-item'><a class='nav-link' href='../Controllers/Login.php?acao=logout'>Sair</a></li>";
+                                    } else {
+                                        echo "<a class='nav-link' href='./login.php'>Login</a>";
+                                    }
+                                    ?>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
                 </div>
-                <div>
-                  <li><a href="../index.php">Início</a></li>
-                  <li><a href="./aboutUs.php">Sobre nós</a></li>
-                  <li><a href="#">Ações beneficentes</a></li>
-                  <?php
-                      if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin'){
-                          echo "<li><a href='./createActionsAdmin.php'>Criar ação</a></li>";
-                      } else {
-                          echo "<li><a target='_blank' href='./createActions.php'>Criar ação</a></li>";
-                      }
-                  ?>
-                </div>
-                <div class="userAndLogout">
-                  <?php
-                    if (isset($_SESSION['username'])) {
-                        $username = $_SESSION['username'];
-                        echo "<li><a href='./situationDonation.php'>{$username}</a></li>";
-                        echo "<li><a href='../Controllers/Login.php?acao=logout'>Sair</a></li>";
-                    } else {
-                        echo "<li><a href='./Views/login.php'>Login</a></li>";
-                    }
-                  ?>
-                </div>
-              </ul>
-          </nav>
-      </div>
-    </header>
+            </nav>
+        </header>
     <hr class="styled-hr">
-    <div class="container">
+    <div class="container" id="container">
       <h2>Confira todas as ações</h2>
       <div class="allActions">
         <?php
@@ -87,6 +102,10 @@
           <br>
       <p>&copy; 2023 GRUPO GLYMTECH Todos os direitos reservados.</p>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </body>
 </html>
 

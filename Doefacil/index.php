@@ -52,7 +52,7 @@
                                     if (isset($_SESSION['username'])) {
                                         $username = $_SESSION['username'];
                                         echo "<a class='nav-link' href='./Views/situationDonation.php'>{$username}</a>";
-                                        echo "<li class='nav-item'><a class='nav-link' href='./Controllers/Login.php?acao=logout'>Logout</a></li>";
+                                        echo "<li class='nav-item'><a class='nav-link' href='./Controllers/Login.php?acao=logout'>Sair</a></li>";
                                     } else {
                                         echo "<a class='nav-link' href='./Views/login.php'>Login</a>";
                                     }

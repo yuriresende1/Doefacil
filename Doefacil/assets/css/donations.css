@@ -72,7 +72,7 @@ nav ul li a:hover {
     margin-top: 100px;
 }
 
-.container {
+#container {
     width: 90vw;
     margin: auto;
     margin-top: 100px;
@@ -95,7 +95,7 @@ nav ul li a:hover {
 
 .box1 {
     width: 400px;
-    height: 520px;
+    height: 580px;
     border: 2px solid black;
     border-radius: 5px;
     display: flex;
@@ -107,7 +107,7 @@ nav ul li a:hover {
 
 .box1:hover {
     transform: scale(1.015);
-    transition: 0.5s;
+    transition: 0.5s; 
 }
 
 .historia1 {
@@ -133,6 +133,10 @@ nav ul li a:hover {
     margin-top: 30px;
 }
 
+.responsavel {
+    margin-top: 10px;
+}
+
 .donationNow {
     margin-top: 20px;
     text-decoration: none;
@@ -148,6 +152,7 @@ nav ul li a:hover {
     border: 2px solid #003468;
     background-color: #003468;
     color: #68bdd8;
+    text-decoration: none;
 }
 
 footer {
@@ -166,4 +171,26 @@ footer {
 
 .social a:hover{
     color: #003c79;
+}
+
+@media (max-width: 425px) {
+    .box1 {
+        width: 300px;
+        height: 580px;
+    }
+}
+
+@media (max-width: 320px) {
+    .box1 {
+        width: 300px;
+        height: 580px;
+    }
+
+    .historia1 {
+        width: 90%;
+        height: 120px;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+    }
 }
