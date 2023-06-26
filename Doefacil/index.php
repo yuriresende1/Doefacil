@@ -17,38 +17,52 @@
     </head>
     <body>
         <header>
-            <div class="botões">
-                <nav>
-                    <ul class="listHeader">
-                        <div>
-                            <img src="./assets/images/Doefacillogo.png" class="logo" alt="Logo do doefacil">
-                        </div>
-                        <div>
-                            <li><a href="#">Início</a></li>
-                            <li><a href="./Views/aboutUs.php">Sobre nós</a></li>
-                            <li><a href="./Views/donations.php">Ações beneficentes</a></li>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container">
+                    <a class="navbar-brand" href="#">
+                        <img src="./assets/images/Doefacillogo.png" class="logo" alt="Logo do doefacil">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Início</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./Views/aboutUs.php">Sobre nós</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./Views/donations.php">Ações beneficentes</a>
+                            </li>
                             <?php
-                                if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin'){
-                                    echo "<li><a href='./Views/createActionsAdmin.php'>Criar ação</a></li>";
-                                } else {
-                                    echo "<li><a target='_blank' href='./Views/createActions.php'>Criar ação</a></li>";
-                                }
+                            if (isset($_SESSION['type_user']) && $_SESSION['type_user'] === 'admin') {
+                                echo "<li class='nav-item'><a class='nav-link' href='./Views/createActionsAdmin.php'>Criar ação</a></li>";
+                            } else {
+                                echo "<li class='nav-item'><a class='nav-link' target='_blank' href='./Views/createActions.php'>Criar ação</a></li>";
+                            }
                             ?>
-                        </div>
-                        <div class="userAndLogout">
-                            <?php
-                                if (isset($_SESSION['username'])) {
-                                    $username = $_SESSION['username'];
-                                    echo "<li><a href='./Views/situationDonation.php'>{$username}</a></li>";
-                                    echo "<li><a href='./Controllers/Login.php?acao=logout'>Logout</a></li>";
-                                } else {
-                                    echo "<li><a href='./Views/login.php'>Login</a></li>";
-                                }
-                            ?>
-                        </div>
-                    </ul>
-                </nav>
-            </div>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <div id="aDireita">
+                                <li class="nav-item">
+                                    <?php
+                                    if (isset($_SESSION['username'])) {
+                                        $username = $_SESSION['username'];
+                                        echo "<a class='nav-link' href='./Views/situationDonation.php'>{$username}</a>";
+                                        echo "<li class='nav-item'><a class='nav-link' href='./Controllers/Login.php?acao=logout'>Logout</a></li>";
+                                    } else {
+                                        echo "<a class='nav-link' href='./Views/login.php'>Login</a>";
+                                    }
+                                    ?>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </header>
         <hr class="styled-hr">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
