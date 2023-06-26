@@ -13,24 +13,30 @@ header { /* cabeçalho */
     background-color: #f5f5f5;
     padding: 10px;
     z-index: 9999;
-    background-size: 100%;
-    background-image: url(../images/Doefacillogo.png);
-    background-size: contain;
-    background-position: 15%;
-    background-repeat: no-repeat;
+    padding: 0;
+}
+
+.logo {
+    width: 80px;
+    padding: 0;
+    margin-bottom: 2px;
+}
+
+.userAndLogout {
     display: flex;
-    justify-content: flex-end;
+    align-items: flex-end;
+    margin-right: 2px;
+}
+
+.listHeader {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 nav {  /* botões */
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     list-style: none;
     padding: 0;
-    display: flex;
-    align-items: center;
 }
 
 nav ul li {
@@ -50,6 +56,7 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #59b3fd;
+    text-decoration: none;
 }
 
 .styled-hr {

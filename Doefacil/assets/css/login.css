@@ -65,6 +65,11 @@ body {
     color: #fff;
     font-weight: bold;
     cursor: pointer;
+    margin-top: 3px;
+}
+
+.backToIndex {
+    text-decoration: none;
 }
 
 .btn-primary {

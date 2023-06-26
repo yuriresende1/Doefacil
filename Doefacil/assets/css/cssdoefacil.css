@@ -15,15 +15,26 @@ header { /* cabeçalho */
     left: 0;
     width: 100%;
     background-color: #f5f5f5;
-    padding: 10px;
+    padding: 0;
     z-index: 9999;
-    background-size: 100%;
-    background-image: url(../images/Doefacillogo.png);
-    background-size: contain;
-    background-position: 15%;
-    background-repeat: no-repeat;
+}
+
+.logo {
+    width: 80px;
+    padding: 0;
+    margin-bottom: 2px;
+}
+
+.userAndLogout {
     display: flex;
-    justify-content: flex-end;
+    align-items: flex-end;
+    margin-right: 2px;
+}
+
+.listHeader {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .carousel-item { /* itens do carrossel */
@@ -52,14 +63,8 @@ header { /* cabeçalho */
 }
 
 nav {  /* botões */
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     list-style: none;
     padding: 0;
-    display: flex;
-    align-items: center;
 }
 
 nav ul li {
@@ -79,8 +84,8 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #59b3fd;
+    text-decoration: none;
 }
-
 
 .styled-hr {
     border: 1px solid #d4d4d4;
@@ -90,8 +95,6 @@ nav ul li a:hover {
 h1 {
     font-size: 34px;
     text-align: center;
-
-
 }
 
 h1[id="h1id1"] {
