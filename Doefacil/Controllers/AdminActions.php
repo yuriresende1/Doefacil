@@ -122,7 +122,7 @@
                         $subject = 'Solicitar criação de ação';
 
                         // Inserir no body as informações de quem está enviando
-                        $body = "Título: $title\n\nDescrição curta: $short_description\n\nDescrição completa: $full_description\n\nO que pode ser doado: $donated\n\nDono da ação: $action_creator\n\nData de expiração: $expiration_date\n\nNão se esquecça de anexar aqui a imagem da ação";
+                        $body = "Título: $title\n\nDescrição curta: $short_description\n\nDescrição completa: $full_description\n\nO que pode ser doado: $donated\n\nDono da ação: $action_creator\n\nData de expiração: $expiration_date\n\nNão se esqueça de anexar aqui a imagem da ação";
 
                         $mailto = "https://mail.google.com/mail/?view=cm&fs=1&to=" . urlencode($email) . "&su=" . urlencode($subject) . "&body=" . urlencode($body);
 
@@ -184,7 +184,7 @@
                         $subject = 'Solicitar criação de ação';
 
                         // Inserir no body as informações de quem está enviando
-                        $body = "Título: $title\n\nDescrição curta: $short_description\n\nDescrição completa: $full_description\n\nO que pode ser doado: $donated\n\nDono da ação: $action_creator\n\nData de expiração: $expiration_date\n\nNão se esquecça de anexar aqui a imagem da ação";
+                        $body = "Título: $title\n\nDescrição curta: $short_description\n\nDescrição completa: $full_description\n\nO que pode ser doado: $donated\n\nDono da ação: $action_creator\n\nData de expiração: $expiration_date\n\nNão se esqueça de anexar aqui a imagem da ação";
 
                         $mailto = "https://mail.google.com/mail/?view=cm&fs=1&to=" . urlencode($email) . "&su=" . urlencode($subject) . "&body=" . urlencode($body);
 
